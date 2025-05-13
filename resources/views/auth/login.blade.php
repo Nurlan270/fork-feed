@@ -7,7 +7,7 @@
           style="background-image: url('{{ asset('media/auth-bg.jpg') }}');">
         <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
-                Sign in to ForkFeed
+                Sign in
             </h2>
 
             <form method="POST" action="{{ route('auth.login.store') }}" class="space-y-4">
@@ -48,7 +48,7 @@
                             Remember me
                         </label>
                     </div>
-                    <a href="#"
+                    <a href="{{ route('password.request') }}"
                        class="text-sm text-orange-600 hover:text-orange-500">
                         Forgot your password?
                     </a>
