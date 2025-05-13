@@ -36,7 +36,7 @@
                                 class="flex items-center gap-2 px-2 py-2 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors cursor-pointer"
                                 aria-expanded="false"
                                 aria-haspopup="true">
-                            <img src="{{ auth()->user()->avatar }}" alt="Profile" class="w-6 h-6 rounded-full object-cover">
+                            <img src="{{ auth()->user()->avatar }}" alt="Avatar" class="w-6 h-6 rounded-full object-cover">
                             <span class="text-sm font-medium">{{ auth()->user()->username }}</span>
                             <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
