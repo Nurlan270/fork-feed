@@ -19,9 +19,7 @@ class OAuthAction
             $user = User::firstOrCreate([
                 'email' => $oauthUser->getEmail(),
             ], [
-                'username' => Str::of(
-                    $oauthUser->getNickname() ?? $oauthUser->getName()
-                )->trim()->lower()->slug('_'),
+                'username' => $this->slug($oauthUser->getNickname() ?? $oauthUser->getName()),
                 'avatar' => $oauthUser->getAvatar(),
                 'password' => Str::password(16, symbols: false)
             ]);
@@ -38,5 +36,10 @@ class OAuthAction
 
             return redirect()->route('auth.register');
         }
+    }
+
+    protected function slug(string $string): string
+    {
+        return Str::of($string)->trim()->lower()->slug('_');
     }
 }
