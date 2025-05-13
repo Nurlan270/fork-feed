@@ -64,6 +64,13 @@
                            required autocomplete="new-password">
                 </div>
 
+                <div class="space-y-2">
+                    {!! Captcha::display() !!}
+                    @error('g-recaptcha-response')
+                    <span class="text-sm text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+
                 <div class="space-y-4">
                     <button type="submit"
                             class="w-full flex justify-center py-2 px-4 border border-transparent

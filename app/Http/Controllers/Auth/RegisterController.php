@@ -8,9 +8,16 @@ use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Multiavatar;
 
 class RegisterController extends Controller
 {
+    public function __construct(
+        protected Multiavatar $avatar
+    ) {}
+
     /**
      * Handle the incoming request.
      */
@@ -19,8 +26,8 @@ class RegisterController extends Controller
         try {
             $data = $request->validated();
 
+            $data['avatar'] = $this->generateAvatar();
             $data['username'] = strtolower($data['username']);
-            $data['avatar'] = 'https://avatar.iran.liara.run/username?username=' . $data['username'];
 
             $user = User::create($data);
 
@@ -36,5 +43,15 @@ class RegisterController extends Controller
 
             return redirect()->back();
         }
+    }
+
+    protected function generateAvatar(): string
+    {
+        $svg = $this->avatar->generate(mt_rand(1, 1000), null, null);
+        $filename = Str::random(32) . '.svg';
+
+        Storage::disk('avatars')->put('tmp/' . $filename, $svg);
+
+        return 'avatars/tmp/' . $filename;
     }
 }

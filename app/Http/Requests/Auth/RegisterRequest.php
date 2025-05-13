@@ -18,6 +18,7 @@ class RegisterRequest extends FormRequest
             'username' => ['required', 'string', 'unique:users,username', 'max:35', 'regex:/^\S*$/'],
             'email' => ['required', 'string', 'email', 'unique:users,email'],
             'password' => ['required', 'string', 'confirmed', 'min:8'],
+            'g-recaptcha-response' => ['required', 'captcha'],
         ];
     }
 
