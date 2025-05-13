@@ -43,10 +43,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 -->
                 <div class="bg-white rounded-lg shadow-sm p-6 text-center">
-                    <svg class="mx-auto h-12 w-12 text-orange-500 mb-4"
-                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M9 13h6v6H9V13z M12 3v2m-3 4h6m0 0l-3 3m3-3l3-3"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 text-orange-500 mb-4 mx-auto">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
                     </svg>
                     <h3 class="text-xl font-semibold text-gray-900">Share Your Recipes</h3>
                     <p class="mt-2 text-gray-600">Upload photos and share your cooking creations with the community.</p>
@@ -54,10 +52,8 @@
 
                 <!-- Card 2 -->
                 <div class="bg-white rounded-lg shadow-sm p-6 text-center">
-                    <svg class="mx-auto h-12 w-12 text-orange-500 mb-4"
-                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M16 11v7a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V11m10-4V9a2 2 0 0 1-2-2H6a2 2 0 0 1-2 2v6a2 2 0 0 1 2 2h6m4-2h8m0 0v4m0-4L12 3m4 5v14m0-14V19m-4-4h4m-4 4c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 text-orange-500 mb-4 mx-auto">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
                     <h3 class="text-xl font-semibold text-gray-900">Discover Recipes</h3>
                     <p class="mt-2 text-gray-600">Browse thousands of recipes shared by food enthusiasts.</p>
@@ -65,10 +61,8 @@
 
                 <!-- Card 3 -->
                 <div class="bg-white rounded-lg shadow-sm p-6 text-center">
-                    <svg class="mx-auto h-12 w-12 text-orange-500 mb-4"
-                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 text-orange-500 mb-4 mx-auto">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
                     </svg>
                     <h3 class="text-xl font-semibold text-gray-900">Join Communities</h3>
                     <p class="mt-2 text-gray-600">Connect with fellow food lovers and join recipe discussions.</p>
@@ -106,10 +100,10 @@
                             </p>
 
                             <div class="mt-4 flex justify-between items-center">
-                                <div class="flex gap-2">
+                                <div class="flex gap-1 items-center">
                                     <span class="text-orange-500">4.9</span>
-                                    <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 15l-4-4 8-8 1.5 1.5L10 12l-5.5 5.5z"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-orange-500">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
                                     </svg>
                                 </div>
 
