@@ -1,11 +1,13 @@
 {
-    "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "fork-feed/fork-feed",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "ForkFeed - Cook. Share. Connect.",
     "keywords": [
         "laravel",
-        "framework"
+        "framework",
+        "docker",
+        "social-network",
+        "php8"
     ],
     "license": "MIT",
     "require": {
