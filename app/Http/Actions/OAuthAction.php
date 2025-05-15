@@ -14,19 +14,13 @@ class OAuthAction
     public function handle(string $provider): RedirectResponse
     {
         try {
-            $oauthUser = Socialite::driver($provider)->user();
-
-            $user = User::firstOrCreate([
-                'email' => $oauthUser->getEmail(),
-            ], [
-                'username' => $this->slug($oauthUser->getNickname() ?? $oauthUser->getName()),
-                'avatar' => $oauthUser->getAvatar(),
-                'password' => Str::password(16, symbols: false)
-            ]);
+            $user = $this->getUser($provider);
 
             Auth::login($user);
 
-            notyf()->success(__('flasher.auth.success'));
+            auth()->user()->markEmailAsVerified();
+
+            notyf()->success(__('flasher.auth.success.oauth'));
 
             return redirect()->route('welcome');
         } catch (\Exception $e) {
@@ -38,8 +32,19 @@ class OAuthAction
         }
     }
 
-    protected function slug(string $string): string
+    protected function getUser(string $provider): User
     {
-        return Str::of($string)->trim()->lower()->slug('_');
+        $oauthUser = Socialite::driver($provider)->user();
+
+        return User::firstOrCreate([
+            'email' => $oauthUser->getEmail(),
+        ], [
+            'username' => getUsernameSlug(
+                $oauthUser->getNickname() ?? $oauthUser->getName(),
+                checkForExistence: true
+            ),
+            'avatar' => $oauthUser->getAvatar(),
+            'password' => Str::password(16, symbols: false)
+        ]);
     }
 }

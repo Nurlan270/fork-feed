@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use Exception;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -27,13 +28,15 @@ class RegisterController extends Controller
             $data = $request->validated();
 
             $data['avatar'] = $this->generateAvatar();
-            $data['username'] = strtolower($data['username']);
+            $data['username'] = getUsernameSlug($data['username']);
 
             $user = User::create($data);
 
             Auth::login($user);
 
-            notyf()->success(__('flasher.auth.success'));
+            event(new Registered($user));
+
+            notyf()->success(__('flasher.auth.success.register'));
 
             return redirect()->route('welcome');
         } catch (Exception $e) {
@@ -52,6 +55,6 @@ class RegisterController extends Controller
 
         Storage::disk('avatars')->put('tmp/' . $filename, $svg);
 
-        return 'avatars/tmp/' . $filename;
+        return url('avatars/tmp/' . $filename);
     }
 }

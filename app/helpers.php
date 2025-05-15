@@ -1,10 +1,17 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Str;
 
 if (!function_exists('getUsernameSlug')) {
-    function getUsernameSlug(string $username): string
+    function getUsernameSlug(string $username, bool $checkForExistence = false): string
     {
-        return Str::of($username)->trim()->lower()->replace(' ', '_');
+        $username = Str::of($username)->trim()->lower()->replaceMatches('/\s+/', '_');
+
+        if ($checkForExistence && User::where('username', $username)->exists()) {
+            $username .= Str::random(2);
+        }
+
+        return $username;
     }
 }
