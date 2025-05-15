@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\Auth\GithubController;
-use App\Http\Controllers\Auth\GoogleController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Auth\PasswordResetController;
-use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\{
+    EmailVerificationController,
+    GithubController,
+    GoogleController,
+    LoginController,
+    LogoutController,
+    PasswordResetController,
+    RegisterController,
+};
 
 //  Authentication
 Route::name('auth.')->prefix('auth')->middleware('guest')->group(function () {
@@ -39,6 +42,17 @@ Route::name('password.')->prefix('auth')->middleware('guest')->group(function ()
     })->name('reset');
 
     Route::post('reset-password', [PasswordResetController::class, 'update'])->name('update');
+});
+
+//  Verify Email
+Route::name('verification.')->prefix('auth/email')->middleware('auth')->group(function () {
+    Route::view('verify', 'auth.email.verify')->name('notice');
+
+    Route::get('verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
+        ->middleware('signed')->name('verify');
+
+    Route::post('verification-notification', [EmailVerificationController::class, 'send'])
+        ->middleware('throttle:4,3')->name('send');
 });
 
 //  Logout
