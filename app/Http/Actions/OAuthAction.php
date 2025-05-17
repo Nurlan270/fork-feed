@@ -16,7 +16,7 @@ class OAuthAction
         try {
             $user = $this->getUser($provider);
 
-            Auth::login($user);
+            Auth::login($user, true);
 
             auth()->user()->markEmailAsVerified();
 
