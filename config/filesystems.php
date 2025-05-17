@@ -56,6 +56,15 @@ return [
             'report' => false,
         ],
 
+        'recipe-images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/recipe-images'),
+            'url' => env('APP_URL') . '/recipe-images',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -84,6 +93,7 @@ return [
 
     'links' => [
         public_path('avatars') => storage_path('app/public/avatars'),
+        public_path('recipe-images') => storage_path('app/public/recipe-images'),
     ],
 
 ];
