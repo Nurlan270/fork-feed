@@ -60,7 +60,7 @@
                 </button>
 
                 <p class="text-sm text-gray-600 text-center">
-                    Remember your password? <a href="{{ route('auth.login') }}" class="text-orange-600 hover:text-orange-500">Sign in</a>
+                    Remember your password? <a href="{{ route('login') }}" class="text-orange-600 hover:text-orange-500">Sign in</a>
                 </p>
             </form>
         </div>
