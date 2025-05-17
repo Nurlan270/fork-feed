@@ -18,7 +18,6 @@ Route::name('auth.')->prefix('auth')->middleware('guest')->group(function () {
     Route::post('register', RegisterController::class)->name('register.store');
 
     //   Login
-    Route::view('login', 'auth.login')->name('login');
     Route::post('login', LoginController::class)->name('login.store');
 
     /* OAuth Providers */
@@ -31,6 +30,9 @@ Route::name('auth.')->prefix('auth')->middleware('guest')->group(function () {
     Route::get('google', [GoogleController::class, 'redirect'])->name('google');
     Route::get('google/callback', [GoogleController::class, 'callback'])->name('google.callback');
 });
+
+//  Login
+Route::view('auth/login', 'auth.login')->middleware('guest')->name('login');
 
 //  Restore Password
 Route::name('password.')->prefix('auth')->middleware('guest')->group(function () {
@@ -52,7 +54,7 @@ Route::name('verification.')->prefix('auth/email')->middleware('auth')->group(fu
         ->middleware('signed')->name('verify');
 
     Route::post('verification-notification', [EmailVerificationController::class, 'send'])
-        ->middleware('throttle:4,3')->name('send');
+        ->middleware('throttle:5,2')->name('send');
 });
 
 //  Logout
