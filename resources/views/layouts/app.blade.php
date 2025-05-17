@@ -15,6 +15,8 @@
         @endif
     </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @bukStyles
+    @stack('styles')
 </head>
 <body class="bg-gray-50">
     <x-navbar />
@@ -22,5 +24,7 @@
     @yield('content')
 
     <x-footer />
+    @bukScripts
+    @stack('scripts')
 </body>
 </html>
