@@ -180,6 +180,9 @@ return [
             'required' => 'Please verify that you are not a robot.',
             'captcha' => 'Captcha error. Please try again.',
         ],
+        'images.*' => [
+            'max' => 'Images size shouldn\'t be greater than 15 MB'
+        ]
     ],
 
     /*
