@@ -39,6 +39,7 @@ class OAuthAction
         return User::firstOrCreate([
             'email' => $oauthUser->getEmail(),
         ], [
+            'name' => trim($oauthUser->getName() ?? $oauthUser->getNickname()),
             'username' => getUsernameSlug(
                 $oauthUser->getNickname() ?? $oauthUser->getName(),
                 checkForExistence: true
