@@ -14,16 +14,14 @@
             @yield('page.title') | {{ config('app.name') }}
         @endif
     </title>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @bukStyles
     @stack('styles')
+    @bukStyles
 </head>
 <body class="bg-gray-50">
-    <x-navbar />
-
     @yield('content')
 
-    <x-footer />
     @bukScripts
     @stack('scripts')
 </body>
