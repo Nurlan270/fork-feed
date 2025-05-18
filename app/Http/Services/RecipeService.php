@@ -13,11 +13,10 @@ class RecipeService
         $ingredients = collect(json_decode($request->ingredients))
             ->pluck('value')
             ->filter()
-            ->unique()
-            ->values();
+            ->unique();
 
         return $ingredients->map(function ($name) {
-            return Ingredient::firstOrCreate(['name' => $name])->id;
+            return Ingredient::firstOrCreate(['name' => ucfirst($name)])->id;
         })->toArray();
     }
 
