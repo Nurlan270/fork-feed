@@ -3,9 +3,11 @@
 @section('page.title', 'Sign In')
 
 @section('content')
+    <x-navbar />
+
     <main class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat bg-fixed"
           style="background-image: url('{{ asset('media/auth-bg.jpg') }}');">
-        <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
+        <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm mt-14">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Sign in
             </h2>
@@ -63,7 +65,10 @@
                         Sign in
                     </button>
 
-                    <div class="relative">
+                    <span class="text-sm text-gray-500">Doesn't have an account? <a
+                            class="text-orange-600 hover:underline" href="{{ route('auth.register') }}">Sign Up</a></span>
+
+                    <div class="relative mt-4">
                         <div class="absolute inset-0 flex items-center">
                             <div class="w-full border-t border-gray-300"></div>
                         </div>
