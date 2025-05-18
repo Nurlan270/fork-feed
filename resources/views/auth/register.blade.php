@@ -3,15 +3,31 @@
 @section('page.title', 'Sign Up')
 
 @section('content')
+    <x-navbar />
+
     <main class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat bg-fixed"
           style="background-image: url('{{ asset('media/auth-bg.jpg') }}');">
-        <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
+        <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm mt-14">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Create an account
             </h2>
 
             <form method="POST" action="{{ route('auth.register.store') }}" class="space-y-4">
                 @csrf
+
+                <div class="space-y-2">
+                    <label for="name" class="text-sm font-medium text-gray-700">
+                        Name
+                    </label>
+                    <input id="name" name="name" type="text"
+                           value="{{ old('name') }}"
+                           class="block w-full p-2 border rounded-md shadow-sm
+                   focus:ring-orange-500 focus:border-orange-500"
+                           required autocomplete="name" autofocus>
+                    @error('name')
+                    <span class="text-sm text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
 
                 <div class="space-y-2">
                     <label for="username" class="text-sm font-medium text-gray-700">
@@ -80,7 +96,10 @@
                         Sign up
                     </button>
 
-                    <div class="relative">
+                    <span class="text-sm text-gray-500">Already have an account? <a
+                            class="text-orange-600 hover:underline" href="{{ route('login') }}">Sign In</a></span>
+
+                    <div class="relative mt-4">
                         <div class="absolute inset-0 flex items-center">
                             <div class="w-full border-t border-gray-300"></div>
                         </div>
