@@ -27,8 +27,9 @@ class RegisterController extends Controller
         try {
             $data = $request->validated();
 
+            $data['name'] = trim($request->name);
             $data['avatar'] = $this->generateAvatar();
-            $data['username'] = getUsernameSlug($data['username']);
+            $data['username'] = getUsernameSlug($request->username);
 
             $user = User::create($data);
 
