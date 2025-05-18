@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <x-navbar/>
+
     <section class="relative min-h-screen bg-cover bg-center flex items-center justify-center"
              style="background-image: url('{{ asset('media/hero.jpg') }}');">
         <!-- Overlay -->
@@ -158,4 +160,6 @@
             </div>
         </div>
     </section>
+
+    <x-footer/>
 @endsection
