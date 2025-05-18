@@ -15,7 +15,8 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string', 'unique:users,username', 'max:35', 'regex:/^\S*$/'],
+            'name' => ['required', 'string', 'max:50', 'regex:/^[A-Za-zА-Яа-яЁё ]+$/u'],
+            'username' => ['required', 'string', 'unique:users,username', 'max:50', 'regex:/^[A-Za-z0-9._-]+$/'],
             'email' => ['required', 'string', 'email', 'unique:users,email'],
             'password' => ['required', 'string', 'confirmed', 'min:8'],
             'g-recaptcha-response' => ['required', 'captcha'],
@@ -25,7 +26,8 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'username.regex' => 'Username can\'t contain spaces.',
+            'name.regex' => 'Only alphabetical characters and space are allowed',
+            'username.regex' => 'Username can\'t contain spaces, or any special characters except: ., -, _',
         ];
     }
 }
