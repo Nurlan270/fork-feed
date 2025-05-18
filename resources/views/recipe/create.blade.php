@@ -9,6 +9,8 @@
 @endpushonce
 
 @section('content')
+    <x-navbar/>
+
     <main class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat bg-fixed pt-24 pb-14"
           style="background-image: url('{{ asset('media/recipe-create.jpg') }}')">
         <div class="max-w-2xl w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
@@ -48,7 +50,7 @@
 
                 <div class="space-y-2">
                     <label class="block text-sm font-medium text-gray-700">
-                        Ingredients (After typing press "Enter")
+                        Ingredients (After typing press "," or "Enter")
                     </label>
                     <input type="text" id="ingredients" name="ingredients" class="w-full rounded-md"
                            value="{{ old('ingredients') }}">
@@ -89,7 +91,10 @@
 @pushonce('scripts')
     <script>
         var tagify = new Tagify(document.querySelector('#ingredients'), {
-            whitelist: []
+            whitelist: @json($ingredients),
+            autoComplete: {
+                rightKey: true
+            }
         });
 
         document.querySelector('#images').addEventListener('change', function () {
