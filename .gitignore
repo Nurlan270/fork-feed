@@ -3,8 +3,6 @@
 /public/build
 /public/hot
 /public/storage
-/public/avatars
-/public/recipe-images
 /storage/*.key
 /storage/pail
 /vendor
