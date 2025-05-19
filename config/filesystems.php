@@ -92,8 +92,8 @@ return [
     */
 
     'links' => [
-        public_path('avatars') => storage_path('app/public/avatars'),
-        public_path('recipe-images') => storage_path('app/public/recipe-images'),
+        public_path('storage/avatars') => storage_path('app/public/avatars'),
+        public_path('storage/recipe-images') => storage_path('app/public/recipe-images'),
     ],
 
 ];
