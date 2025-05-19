@@ -21,7 +21,7 @@
                     </label>
                     <input type="email" id="email" name="email" value="{{ old('email') }}"
                            class="block w-full p-2 border rounded-md shadow-sm
-                       focus:ring-orange-500 focus:border-orange-500"
+                       focus:ring-primary-500 focus:border-primary-500"
                            required>
                     @error('email')
                     <span class="text-sm text-red-500">{{ $message }}</span>
@@ -34,7 +34,7 @@
                     </label>
                     <input type="password" id="password" name="password"
                            class="block w-full p-2 border rounded-md shadow-sm
-                       focus:ring-orange-500 focus:border-orange-500"
+                       focus:ring-primary-500 focus:border-primary-500"
                            required>
                     @error('password')
                     <span class="text-sm text-red-500">{{ $message }}</span>
@@ -47,20 +47,20 @@
                     </label>
                     <input type="password" id="password-confirm" name="password_confirmation"
                            class="block w-full p-2 border rounded-md shadow-sm
-                       focus:ring-orange-500 focus:border-orange-500"
+                       focus:ring-primary-500 focus:border-primary-500"
                            required>
                 </div>
 
                 <button type="submit" class="w-full flex justify-center py-2 px-4
                     border border-transparent rounded-md shadow-sm
-                    text-sm font-medium text-white bg-orange-600
-                    hover:bg-orange-700 focus:outline-none focus:ring-2
-                    focus:ring-offset-2 focus:ring-orange-500 cursor-pointer">
+                    text-sm font-medium text-white bg-primary-600
+                    hover:bg-primary-700 focus:outline-none focus:ring-2
+                    focus:ring-offset-2 focus:ring-primary-500 cursor-pointer transition-colors">
                     Reset Password
                 </button>
 
                 <p class="text-sm text-gray-600 text-center">
-                    Remember your password? <a href="{{ route('login') }}" class="text-orange-600 hover:text-orange-500">Sign in</a>
+                    Remember your password? <a href="{{ route('login') }}" class="text-primary-600 hover:text-primary-500">Sign in</a>
                 </p>
             </form>
         </div>

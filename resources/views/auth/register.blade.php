@@ -22,7 +22,7 @@
                     <input id="name" name="name" type="text"
                            value="{{ old('name') }}"
                            class="block w-full p-2 border rounded-md shadow-sm
-                   focus:ring-orange-500 focus:border-orange-500"
+                   focus:ring-primary-500 focus:border-primary-500"
                            required autocomplete="name" autofocus>
                     @error('name')
                     <span class="text-sm text-red-500">{{ $message }}</span>
@@ -36,7 +36,7 @@
                     <input id="username" name="username" type="text"
                            value="{{ old('username') }}"
                            class="block w-full p-2 border rounded-md shadow-sm
-                   focus:ring-orange-500 focus:border-orange-500"
+                   focus:ring-primary-500 focus:border-primary-500"
                            required autocomplete="name" autofocus>
                     @error('username')
                     <span class="text-sm text-red-500">{{ $message }}</span>
@@ -50,7 +50,7 @@
                     <input id="email" name="email" type="email"
                            value="{{ old('email') }}"
                            class="block w-full p-2 border rounded-md shadow-sm
-                   focus:ring-orange-500 focus:border-orange-500"
+                   focus:ring-primary-500 focus:border-primary-500"
                            required autocomplete="email">
                     @error('email')
                     <span class="text-sm text-red-500">{{ $message }}</span>
@@ -63,7 +63,7 @@
                     </label>
                     <input id="password" name="password" type="password"
                            class="block w-full p-2 border rounded-md shadow-sm
-                   focus:ring-orange-500 focus:border-orange-500"
+                   focus:ring-primary-500 focus:border-primary-500"
                            required autocomplete="new-password">
                     @error('password')
                     <span class="text-sm text-red-500">{{ $message }}</span>
@@ -76,7 +76,7 @@
                     </label>
                     <input id="password-confirm" name="password_confirmation" type="password"
                            class="block w-full p-2 border rounded-md shadow-sm
-                   focus:ring-orange-500 focus:border-orange-500"
+                   focus:ring-primary-500 focus:border-primary-500"
                            required autocomplete="new-password">
                 </div>
 
@@ -90,14 +90,14 @@
                 <div class="space-y-4">
                     <button type="submit"
                             class="w-full flex justify-center py-2 px-4 border border-transparent
-                    rounded-md shadow-sm text-sm font-medium text-white bg-orange-600
-                    hover:bg-orange-700 focus:outline-none focus:ring-2 cursor-pointer
-                    focus:ring-offset-2 focus:ring-orange-500">
+                    rounded-md shadow-sm text-sm font-medium text-white bg-primary-600
+                    hover:bg-primary-700 focus:outline-none focus:ring-2 cursor-pointer
+                    focus:ring-offset-2 focus:ring-primary-500 transition-colors">
                         Sign up
                     </button>
 
                     <span class="text-sm text-gray-500">Already have an account? <a
-                            class="text-orange-600 hover:underline" href="{{ route('login') }}">Sign In</a></span>
+                            class="text-primary-600 hover:underline" href="{{ route('login') }}">Sign In</a></span>
 
                     <div class="relative mt-4">
                         <div class="absolute inset-0 flex items-center">
@@ -115,7 +115,7 @@
                            class="flex-1 flex items-center justify-center gap-2 py-2 px-4 border border-gray-300
                    rounded-md shadow-sm text-sm font-medium text-gray-700
                    hover:bg-gray-50 focus:outline-none focus:ring-2
-                   focus:ring-offset-2 focus:ring-orange-500">
+                   focus:ring-offset-2 focus:ring-primary-500">
                             <img src="{{ asset('media/google-icon.svg') }}" class="size-5" alt="Google logo">
                             Google
                         </a>
@@ -123,7 +123,7 @@
                            class="flex-1 flex items-center justify-center gap-2 py-2 px-4 border border-gray-300
                    rounded-md shadow-sm text-sm font-medium text-gray-700
                    hover:bg-gray-50 focus:outline-none focus:ring-2
-                   focus:ring-offset-2 focus:ring-orange-500">
+                   focus:ring-offset-2 focus:ring-primary-500">
                             <img src="{{ asset('media/github-icon.svg') }}" class="size-5" alt="GitHub logo">
                             GitHub
                         </a>

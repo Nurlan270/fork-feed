@@ -22,7 +22,7 @@
                     <input id="login" name="login" type="text"
                            value="{{ old('login') }}"
                            class="block w-full p-2 border rounded-md shadow-sm
-                       focus:ring-orange-500 focus:border-orange-500"
+                       focus:ring-primary-500 focus:border-primary-500"
                            required autocomplete="email" autofocus>
                     @error('login')
                     <span class="text-sm text-red-500">{{ $message }}</span>
@@ -35,7 +35,7 @@
                     </label>
                     <input id="password" name="password" type="password"
                            class="block w-full p-2 border rounded-md shadow-sm
-                       focus:ring-orange-500 focus:border-orange-500"
+                       focus:ring-primary-500 focus:border-primary-500"
                            required autocomplete="current-password">
                     @error('password')
                     <span class="text-sm text-red-500">{{ $message }}</span>
@@ -45,13 +45,13 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
                         <input id="remember" name="remember" type="checkbox"
-                               class="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded cursor-pointer">
+                               class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded cursor-pointer">
                         <label for="remember" class="ml-2 block text-sm text-gray-900 cursor-pointer">
                             Remember me
                         </label>
                     </div>
                     <a href="{{ route('password.request') }}"
-                       class="text-sm text-orange-600 hover:text-orange-500">
+                       class="text-sm text-primary-600 hover:text-primary-500">
                         Forgot your password?
                     </a>
                 </div>
@@ -59,14 +59,14 @@
                 <div class="space-y-4">
                     <button type="submit"
                             class="w-full flex justify-center py-2 px-4 border border-transparent
-                        rounded-md shadow-sm text-sm font-medium text-white bg-orange-600
-                        hover:bg-orange-700 focus:outline-none focus:ring-2
-                        focus:ring-offset-2 focus:ring-orange-500 cursor-pointer">
+                        rounded-md shadow-sm text-sm font-medium text-white bg-primary-600
+                        hover:bg-primary-700 focus:outline-none focus:ring-2
+                        focus:ring-offset-2 focus:ring-primary-500 cursor-pointer transition-colors">
                         Sign in
                     </button>
 
                     <span class="text-sm text-gray-500">Doesn't have an account? <a
-                            class="text-orange-600 hover:underline" href="{{ route('auth.register') }}">Sign Up</a></span>
+                            class="text-primary-600 hover:underline" href="{{ route('auth.register') }}">Sign Up</a></span>
 
                     <div class="relative mt-4">
                         <div class="absolute inset-0 flex items-center">
@@ -84,7 +84,7 @@
                            class="flex-1 flex items-center justify-center gap-2 py-2 px-4 border border-gray-300
                    rounded-md shadow-sm text-sm font-medium text-gray-700
                    hover:bg-gray-50 focus:outline-none focus:ring-2
-                   focus:ring-offset-2 focus:ring-orange-500">
+                   focus:ring-offset-2 focus:ring-primary-500">
                             <img src="{{ asset('media/google-icon.svg') }}" class="size-5" alt="Google logo">
                             Google
                         </a>
@@ -92,7 +92,7 @@
                            class="flex-1 flex items-center justify-center gap-2 py-2 px-4 border border-gray-300
                    rounded-md shadow-sm text-sm font-medium text-gray-700
                    hover:bg-gray-50 focus:outline-none focus:ring-2
-                   focus:ring-offset-2 focus:ring-orange-500">
+                   focus:ring-offset-2 focus:ring-primary-500">
                             <img src="{{ asset('media/github-icon.svg') }}" class="size-5" alt="GitHub logo">
                             GitHub
                         </a>
