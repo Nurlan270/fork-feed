@@ -23,7 +23,7 @@ class LoginController extends Controller
             if (Auth::attempt([$field => $data['login'], 'password' => $data['password']], $request->filled('remember'))) {
                 $request->session()->regenerate();
 
-                notyf()->success(__('flasher.auth.success'));
+                notyf()->success(__('flasher.auth.success.login'));
 
                 return redirect()->route('welcome');
             }

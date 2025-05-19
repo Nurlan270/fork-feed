@@ -20,7 +20,7 @@ class OAuthAction
 
             auth()->user()->markEmailAsVerified();
 
-            notyf()->success(__('flasher.auth.success.oauth'));
+            notyf()->success(__('flasher.auth.success.login'));
 
             return redirect()->route('welcome');
         } catch (\Exception $e) {
