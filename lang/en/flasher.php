@@ -4,7 +4,7 @@ return [
     'auth' => [
         'success' => [
             'register' => 'Authentication successful. Please check your inbox to verify email',
-            'oauth' => 'Authentication successful'
+            'login' => 'Authentication successful'
         ],
         'error' => 'Authentication failed. Please try again',
     ],
