@@ -52,6 +52,18 @@ class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
 
     public function recipes(): HasMany
     {
-        return $this->hasMany(Recipe::class);
+        return $this->hasMany(Recipe::class)->latest();
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class,'followers', 'user_id', 'follower_id')
+            ->withTimestamps();
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id')
+            ->withTimestamps();
     }
 }
