@@ -23,6 +23,6 @@ class StoreRecipeController extends Controller
 
         $service->storeImages($request, $recipe);
 
-        return redirect()->route('welcome');
+        return redirect()->route('profile');
     }
 }
