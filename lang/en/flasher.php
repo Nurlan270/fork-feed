@@ -1,6 +1,7 @@
 <?php
 
 return [
+    //  Authentication
     'auth' => [
         'success' => [
             'register' => 'Authentication successful. Please check your inbox to verify email',
@@ -14,4 +15,9 @@ return [
     ],
     'logout' => 'Logged out',
     'invalid_credentials' => 'Invalid credentials',
+
+    //  Recipe
+    'recipe' => [
+        'deleted' => 'Recipe deleted'
+    ]
 ];
