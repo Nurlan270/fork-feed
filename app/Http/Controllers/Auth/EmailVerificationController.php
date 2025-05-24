@@ -14,7 +14,7 @@ class EmailVerificationController extends Controller
 
         notyf()->success(__('flasher.email.success'));
 
-        return redirect()->intended('welcome');
+        return redirect()->intended();
     }
 
     public function send(Request $request)
