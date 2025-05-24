@@ -3,8 +3,9 @@
 @section('page.title', 'Forgot Password')
 
 @section('content')
-    <main class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat bg-fixed"
-          style="background-image: url('{{ asset('media/auth-bg.jpg') }}')">
+    <x-navbar/>
+
+    <main class="flex items-start justify-center py-5">
         <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Reset Password

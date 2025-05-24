@@ -6,13 +6,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css"/>
+    @bukStyles
 @endpushonce
 
 @section('content')
     <x-navbar/>
 
-    <main class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat bg-fixed pt-24 pb-14"
-          style="background-image: url('{{ asset('media/recipe-create.jpg') }}')">
+    <main class="flex items-start justify-center my-5">
         <div class="max-w-2xl w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Create New Recipe
@@ -39,7 +39,7 @@
                     <label for="description" class="text-sm font-medium text-gray-700">
                         Description
                     </label>
-                    <x-easy-mde name="description" :options="[
+                    <x-markdown-editor name="description" :options="[
                         'minHeight' => '200px',
                         'placeholder' => 'Cook something awesome!',
                     ]"/>
@@ -103,4 +103,5 @@
             label.textContent = count > 0 ? `${count} image(s) selected` : 'Click to upload images (Max. 15MB)';
         });
     </script>
+    @bukScripts
 @endpushonce

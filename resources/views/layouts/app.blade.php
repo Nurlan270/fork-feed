@@ -16,13 +16,13 @@
     </title>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
     @stack('styles')
-    @bukStyles
 </head>
 <body class="bg-gray-50">
     @yield('content')
 
-    @bukScripts
+    @livewireScripts
     @stack('scripts')
 </body>
 </html>

@@ -5,9 +5,8 @@
 @section('content')
     <x-navbar />
 
-    <main class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat bg-fixed"
-          style="background-image: url('{{ asset('media/auth-bg.jpg') }}');">
-        <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm mt-14">
+    <main class="min-h-8 flex items-center justify-center py-5">
+        <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Sign in
             </h2>
