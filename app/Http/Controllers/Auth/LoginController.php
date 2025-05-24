@@ -25,7 +25,7 @@ class LoginController extends Controller
 
                 notyf()->success(__('flasher.auth.success.login'));
 
-                return redirect()->route('welcome');
+                return redirect()->intended();
             }
 
             notyf()->error(__('flasher.invalid_credentials'));
