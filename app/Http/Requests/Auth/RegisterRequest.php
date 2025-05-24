@@ -28,6 +28,7 @@ class RegisterRequest extends FormRequest
         return [
             'name.regex' => 'Only alphabetical characters and space are allowed',
             'username.regex' => 'Username can\'t contain spaces, or any special characters except: ., -, _',
+            'email.unique' => 'User with this email already exists'
         ];
     }
 }

@@ -17,7 +17,9 @@ class RegisterController extends Controller
 {
     public function __construct(
         protected Multiavatar $avatar
-    ) {}
+    )
+    {
+    }
 
     /**
      * Handle the incoming request.
@@ -39,7 +41,7 @@ class RegisterController extends Controller
 
             notyf()->success(__('flasher.auth.success.register'));
 
-            return redirect()->route('welcome');
+            return redirect()->intended();
         } catch (Exception $e) {
             Log::error('While registering: ' . $e->getMessage());
 
@@ -56,6 +58,6 @@ class RegisterController extends Controller
 
         Storage::disk('avatars')->put('tmp/' . $filename, $svg);
 
-        return url('avatars/tmp/' . $filename);
+        return Storage::url('avatars/tmp/' . $filename);
     }
 }
