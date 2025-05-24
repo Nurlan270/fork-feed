@@ -53,7 +53,7 @@ Route::name('verification.')->prefix('auth/email')->middleware('auth')->group(fu
     Route::get('verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
         ->middleware('signed')->name('verify');
 
-    Route::post('verification-notification', [EmailVerificationController::class, 'send'])
+    Route::post('send', [EmailVerificationController::class, 'send'])
         ->middleware('throttle:5,2')->name('send');
 });
 
