@@ -15,13 +15,15 @@ class StoreRecipeController extends Controller
     {
         $request->validated();
 
-        $ingredientIds = $service->createAndGetIngredientIds($request);
+        $ingredients = $service->createIngredients($request);
 
-        $recipe = $service->createAndGetRecipe($request);
+        $recipe = $service->createRecipe($request);
 
-        $recipe->ingredients()->sync($ingredientIds);
+        $recipe->ingredients()->sync($ingredients);
 
         $service->storeImages($request, $recipe);
+
+        notyf()->success(__('flasher.recipe.created'));
 
         return redirect()->route('profile');
     }
