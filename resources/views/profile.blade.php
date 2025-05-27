@@ -72,18 +72,6 @@
                         </div>
                     </div>
 
-                    <!-- Bookmarks -->
-                    {{--                    <div class="bg-white rounded-lg p-3 md:p-4 shadow-sm">--}}
-                    {{--                        <h3 class="text-base md:text-lg font-semibold text-primary-800 mb-5">--}}
-                    {{--                            Bookmarks--}}
-                    {{--                        </h3>--}}
-                    {{--                        <div class="grid grid-cols-2 gap-2">--}}
-                    {{--                            <img src="" alt="Recipe" class="w-full h-32 md:h-44 rounded-lg object-cover">--}}
-                    {{--                            <img src="" alt="Recipe" class="w-full h-32 md:h-44 rounded-lg object-cover">--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
-
-                    <!-- Most Used Ingredients -->
                     <div class="bg-white rounded-lg p-3 md:p-4 shadow-sm">
                         <h3 class="text-base md:text-lg font-semibold text-primary-800 mb-4">
                             Most used ingredients
@@ -145,59 +133,65 @@
                                             <p class="text-xs drop-shadow">{{ $recipe->created_at->diffForHumans() }}</p>
                                         </div>
 
-                                        <!-- Dropdown button: hidden by default, shown on hover -->
-                                        <div
-                                            class="absolute top-2 right-2 z-40 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                                            <div class="relative">
-                                                <button id="dropdownMenuIconButton-{{ $loop->index }}"
-                                                        data-dropdown-toggle="dropdownDots-{{ $loop->index }}"
-                                                        class="inline-flex items-center p-2 text-xs text-white bg-black/30 rounded-md hover:bg-black/50 transition-colors focus:outline-none focus:ring-0 cursor-pointer"
-                                                        type="button">
-                                                    <svg class="w-4 h-4" aria-hidden="true"
-                                                         xmlns="http://www.w3.org/2000/svg"
-                                                         fill="currentColor" viewBox="0 0 4 15">
-                                                        <path
-                                                            d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
-                                                    </svg>
-                                                </button>
+                                        @canany(['update', 'delete'], $recipe)
+                                            <!-- Dropdown button: hidden by default, shown on hover -->
+                                            <div
+                                                class="absolute top-2 right-2 z-40 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                                <div class="relative">
+                                                    <button id="dropdownMenuIconButton-{{ $loop->index }}"
+                                                            data-dropdown-toggle="dropdownDots-{{ $loop->index }}"
+                                                            class="inline-flex items-center p-2 text-xs text-white bg-black/30 rounded-md hover:bg-black/50 transition-colors focus:outline-none focus:ring-0 cursor-pointer"
+                                                            type="button">
+                                                        <svg class="w-4 h-4" aria-hidden="true"
+                                                             xmlns="http://www.w3.org/2000/svg"
+                                                             fill="currentColor" viewBox="0 0 4 15">
+                                                            <path
+                                                                d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                                                        </svg>
+                                                    </button>
 
-                                                <div id="dropdownDots-{{ $loop->index }}"
-                                                     class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-28 dark:bg-gray-700 dark:divide-gray-600 absolute right-0 mt-2">
-                                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                                        aria-labelledby="dropdownMenuIconButton-{{ $loop->index }}">
-                                                        <li>
-                                                            <a href="#"
-                                                               class="flex items-center gap-x-3 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                     viewBox="0 0 24 24" stroke-width="1.5"
-                                                                     stroke="currentColor" class="size-4">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"/>
-                                                                </svg>
-                                                                Edit
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <form action="{{ route('recipe.delete', compact('recipe')) }}" method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit"
-                                                                        class="flex items-center gap-x-3 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer">
+                                                    <div id="dropdownDots-{{ $loop->index }}"
+                                                         class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-28 dark:bg-gray-700 dark:divide-gray-600 absolute right-0 mt-2">
+                                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                                            aria-labelledby="dropdownMenuIconButton-{{ $loop->index }}">
+                                                            <li>
+                                                                <a href="{{ route('recipe.edit', compact('recipe')) }}"
+                                                                   class="flex items-center gap-x-3 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                          viewBox="0 0 24 24" stroke-width="1.5"
                                                                          stroke="currentColor" class="size-4">
                                                                         <path stroke-linecap="round"
                                                                               stroke-linejoin="round"
-                                                                              d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/>
+                                                                              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"/>
                                                                     </svg>
-                                                                    Delete
-                                                                </button>
-                                                            </form>
-                                                        </li>
-                                                    </ul>
+                                                                    Edit
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <form
+                                                                    action="{{ route('recipe.delete', compact('recipe')) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                            class="flex items-center gap-x-3 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             fill="none"
+                                                                             viewBox="0 0 24 24" stroke-width="1.5"
+                                                                             stroke="currentColor" class="size-4">
+                                                                            <path stroke-linecap="round"
+                                                                                  stroke-linejoin="round"
+                                                                                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/>
+                                                                        </svg>
+                                                                        Delete
+                                                                    </button>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endcanany
                                     </div>
                                 @endforeach
                             </div>
