@@ -8,6 +8,13 @@ use Illuminate\Auth\Access\Response;
 
 class RecipePolicy
 {
+    public function update(User $user, Recipe $recipe): Response
+    {
+        return $user->id === $recipe->user_id
+            ? Response::allow()
+            : Response::denyAsNotFound();
+    }
+
     public function delete(User $user, Recipe $recipe): Response
     {
         return $user->id === $recipe->user_id
