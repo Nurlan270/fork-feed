@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class DeleteRecipeController extends Controller
 {
@@ -15,6 +16,10 @@ class DeleteRecipeController extends Controller
     public function __invoke(Request $request, Recipe $recipe)
     {
         Gate::authorize('delete', $recipe);
+
+        $recipe->images()->each(function ($image) {
+            Storage::delete('recipe-images/' . $image->name);
+        });
 
         $recipe->delete();
 
