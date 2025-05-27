@@ -18,6 +18,8 @@ return [
 
     //  Recipe
     'recipe' => [
+        'created' => 'Recipe created',
+        'updated' => 'Recipe updated',
         'deleted' => 'Recipe deleted'
-    ]
+    ],
 ];
