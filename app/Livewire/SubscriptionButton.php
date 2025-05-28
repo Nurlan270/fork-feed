@@ -10,18 +10,17 @@ class SubscriptionButton extends Component
     public User $user;
     public bool $isFollowing = false;
 
-    public function mount(User $user): void
+    public function mount(): void
     {
-        $this->user = $user;
-        $this->isFollowing = auth()->check() ? auth()->user()->following->contains($user->id) : false;
+        $this->isFollowing = auth()->user()->following->contains($this->user->id);
     }
-    public function follow()
+    public function follow(): void
     {
         auth()->user()->following()->attach($this->user->id);
         $this->isFollowing = true;
     }
 
-    public function unfollow()
+    public function unfollow(): void
     {
         auth()->user()->following()->detach($this->user->id);
         $this->isFollowing = false;

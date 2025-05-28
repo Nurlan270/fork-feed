@@ -1,7 +1,5 @@
 <div>
-    @if(auth()->check()
-        && auth()->user()->hasVerifiedEmail()
-        && auth()->id() !== $user->id)
+    @canany(['subscribe', 'unsubscribe'], $user)
         @if($isFollowing)
             <button wire:click="unfollow"
                     class="flex items-center gap-x-2 px-4 py-1.5 bg-gray-200 text-gray-800 text-sm rounded-md hover:bg-gray-300 transition-colors cursor-pointer">
@@ -22,5 +20,5 @@
                 Follow
             </button>
         @endif
-    @endif
+    @endcanany
 </div>
