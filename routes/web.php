@@ -7,11 +7,6 @@ use App\Models\User;
 
 Route::view('/', 'welcome')->name('welcome');
 
-//  Authenticated & Verified routes
-Route::middleware(['auth', 'verified'])->group(function () {
-    //
-});
-
 //  Authenticated routes
 Route::middleware('auth')->group(function () {
     //  My Profile
