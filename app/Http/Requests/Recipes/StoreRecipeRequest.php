@@ -24,11 +24,11 @@ class StoreRecipeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:100'],
+            'title'       => ['required', 'string', 'max:100'],
             'description' => ['required', 'string', 'max:10000'],
             'ingredients' => ['required', 'min:1'],
-            'images' => ['required', 'array', 'min:1', 'max:20'],
-            'images.*' => ['required', File::image()->max('15MB')]
+            'images'      => ['required', 'array', 'min:1', 'max:20'],
+            'images.*'    => ['required', File::image()->max('15MB')],
         ];
     }
 }
