@@ -2,24 +2,30 @@
 
 return [
     //  Authentication
-    'auth' => [
+    'auth'                => [
         'success' => [
             'register' => 'Authentication successful. Please check your inbox to verify email',
-            'login' => 'Authentication successful'
+            'login'    => 'Authentication successful',
         ],
-        'error' => 'Authentication failed. Please try again',
+        'error'   => 'Authentication failed. Please try again',
     ],
-    'email' => [
+    'email'               => [
         'success' => 'Email verified successfully',
-        'sent' => 'Email verification link sent to your email address. Please check your inbox',
+        'sent'    => 'Email verification link sent to your email address. Please check your inbox',
     ],
-    'logout' => 'Logged out',
+    'logout'              => 'Logged out',
     'invalid_credentials' => 'Invalid credentials',
 
     //  Recipe
-    'recipe' => [
+    'recipe'              => [
         'created' => 'Recipe created',
         'updated' => 'Recipe updated',
-        'deleted' => 'Recipe deleted'
+        'deleted' => 'Recipe deleted',
+    ],
+
+    //  Exceptions
+    'exceptions' => [
+        'removal_of_all_recipe_images'        => "Can't remove all recipe images",
+        'recipe_images_upload_limit_exceeded' => "Recipe can't have more than 20 images",
     ],
 ];
