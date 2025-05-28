@@ -2,6 +2,8 @@
 
 namespace App\Http\Services;
 
+use App\Exceptions\RemovalOfAllRecipeImagesException;
+use App\Exceptions\RecipeImagesUploadLimitExceededException;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\RecipeImage;
@@ -10,46 +12,18 @@ use Illuminate\Support\Facades\Storage;
 
 class RecipeService
 {
-    public function createRecipe(FormRequest $request): Recipe
+    public function createRecipe(FormRequest $request)
     {
-        return $request->user()->recipes()->create([
+        $ingredients = $this->createIngredients($request);
+
+        $recipe = $request->user()->recipes()->create([
             'title'       => $request->title,
             'description' => $request->description,
         ]);
-    }
 
-    public function createIngredients(FormRequest $request): array
-    {
-        return collect(json_decode($request->ingredients))
-            ->pluck('value')
-            ->filter()
-            ->unique()
-            ->map(function ($name) {
-                return Ingredient::firstOrCreate(['name' => ucfirst($name)])->id;
-            })->toArray();
-    }
+        $recipe->ingredients()->sync($ingredients);
 
-    public function storeImages(FormRequest $request, Recipe $recipe): void
-    {
-        $names = collect($request->file('images'))->map(function ($image) {
-            return $image->store('/', 'recipe-images');
-        });
-
-        $recipe->images()->createMany(
-            $names->map(fn($name) => ['name' => $name])->toArray()
-        );
-    }
-
-    protected function removeDeletedImages(FormRequest $request): void
-    {
-        $deletedImages = collect(json_decode($request->deleted_images, true))->filter();
-
-        $ids = $deletedImages->keys();
-        $names = $deletedImages->values()->map(fn($name) => 'recipe-images/' . $name);
-
-        RecipeImage::whereIn('id', $ids)->delete();
-
-        Storage::delete($names->toArray());
+        $this->storeImages($request, $recipe);
     }
 
     public function updateRecipe(FormRequest $request, Recipe $recipe): void
@@ -60,8 +34,60 @@ class RecipeService
 
         $recipe->ingredients()->sync($ingredients);
 
-        $this->removeDeletedImages($request);
+        $this->removeDeletedImages($request, $recipe);
 
         $this->storeImages($request, $recipe);
+    }
+
+    protected function createIngredients(FormRequest $request): array
+    {
+        return collect(json_decode($request->ingredients))
+            ->pluck('value')
+            ->filter()
+            ->unique()
+            ->map(function ($name) {
+                return Ingredient::firstOrCreate(['name' => ucfirst($name)])->id;
+            })->toArray();
+    }
+
+    protected function storeImages(FormRequest $request, Recipe $recipe): void
+    {
+        $existingImagesCount = RecipeImage::where('recipe_id', $recipe->id)->count();
+        $uploadedImagesCount = $request->hasFile('images') ? count($request->file('images')) : 0;
+
+        if (($existingImagesCount + $uploadedImagesCount) > 20) {
+            throw new RecipeImagesUploadLimitExceededException(
+                __('flasher.exceptions.recipe_images_upload_limit_exceeded')
+            );
+        }
+
+        $names = collect($request->file('images'))->map(function ($image) {
+            return $image->store('/', 'recipe-images');
+        });
+
+        $recipe->images()->createMany(
+            $names->map(fn($name) => ['name' => $name])->toArray()
+        );
+    }
+
+    protected function removeDeletedImages(FormRequest $request, Recipe $recipe): void
+    {
+        $deletedImages = collect(json_decode($request->deleted_images))->filter();
+
+        if ($deletedImages->isNotEmpty() && !$request->hasFile('images')) {
+            $imagesCount = RecipeImage::where('recipe_id', $recipe->id)->count();
+            if ($imagesCount <= 1 || $deletedImages->count() >= $imagesCount) {
+                throw new RemovalOfAllRecipeImagesException(
+                    __('flasher.exceptions.removal_of_all_recipe_images')
+                );
+            }
+        }
+
+        $ids = $deletedImages->keys();
+        $names = $deletedImages->values()->map(fn($name) => 'recipe-images/' . $name);
+
+        RecipeImage::whereIn('id', $ids)->delete();
+
+        Storage::delete($names->toArray());
     }
 }
