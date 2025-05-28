@@ -8,7 +8,7 @@ use App\Http\Controllers\Recipe\{
     UpdateRecipeController
 };
 
-Route::name('recipe.')->prefix('recipes')->group(function () {
+Route::name('recipe.')->prefix('recipes')->middleware(['auth', 'verified'])->group(function () {
     Route::get('create', CreateRecipeController::class)->name('create');
     Route::post('/', StoreRecipeController::class)->name('store');
     Route::get('{recipe}/edit', EditRecipeController::class)->name('edit');
