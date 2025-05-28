@@ -13,15 +13,7 @@ class StoreRecipeController extends Controller
      */
     public function __invoke(StoreRecipeRequest $request, RecipeService $service)
     {
-        $request->validated();
-
-        $ingredients = $service->createIngredients($request);
-
-        $recipe = $service->createRecipe($request);
-
-        $recipe->ingredients()->sync($ingredients);
-
-        $service->storeImages($request, $recipe);
+        $service->createRecipe($request);
 
         notyf()->success(__('flasher.recipe.created'));
 
