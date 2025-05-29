@@ -7,6 +7,7 @@ import {Navigation, Pagination} from "swiper/modules";
 Swiper.use([Navigation, Pagination]);
 
 const swiper = new Swiper('.swiper', {
+    loop: true,
     spaceBetween: 10,
     navigation: {
         nextEl: '.swiper-button-next',
