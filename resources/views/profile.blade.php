@@ -10,8 +10,8 @@
 @section('content')
     <x-navbar/>
 
-    <main class="max-h-screen flex items-start justify-center">
-        <div class="max-w-7xl w-full bg-white/90 shadow-md p-4 backdrop-blur-sm">
+    <main class="min-h-screen flex items-start justify-center">
+        <div class="max-w-7xl w-full min-h-screen bg-white/90 shadow-md p-4 backdrop-blur-sm">
             <div class="relative w-full mb-6 md:mb-10">
                 <div class="relative w-full mb-6 md:mb-10">
                     <!-- Banner -->
@@ -35,7 +35,7 @@
                     <p class="text-sm md:text-base text-primary-900">{{ '@' . $user->username }}</p>
                 </div>
 
-                <livewire:subscription-button :user="$user"/>
+                <livewire:subscription-button :$user/>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mb-4 md:mb-6">
@@ -48,21 +48,21 @@
                         </h3>
                         <div class="grid grid-cols-3 gap-2 md:gap-4 text-center py-6 border-b-2 border-b-gray-200">
                             <div>
-                    <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
-                        {{ $user->recipes()->count() }}
-                    </span>
+                                <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
+                                    {{ $user->recipes->count() }}
+                                </span>
                                 <span class="block text-xs md:text-sm text-primary-900">Recipes</span>
                             </div>
                             <div>
-                    <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
-                        {{ $user->followers->count() }}
-                    </span>
+                                <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
+                                    {{ $user->followers->count() }}
+                                </span>
                                 <span class="block text-xs md:text-sm text-primary-900">Followers</span>
                             </div>
                             <div>
-                    <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
-                        {{ $user->following->count() }}
-                    </span>
+                                <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
+                                    {{ $user->following->count() }}
+                                </span>
                                 <span class="block text-xs md:text-sm text-primary-900">Following</span>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                               d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"/>
                                     </svg>
-                                    <span>Upload Recipe</span>
+                                    <span class="hide-xs">Upload Recipe</span>
                                 </a>
                             @endif
                         </div>
@@ -113,8 +113,8 @@
                         @if($user->recipes->isNotEmpty())
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                                 @foreach($user->recipes as $recipe)
-                                    <div
-                                        class="group relative rounded-lg overflow-hidden hover:opacity-90 transition-opacity">
+                                    <div onclick="window.location='{{ route('recipe.show', compact('recipe')) }}'"
+                                         class="group relative rounded-lg overflow-hidden hover:opacity-90 transition-opacity cursor-pointer">
 
                                         <!-- Image -->
                                         <img src="{{ Storage::url('recipe-images/'.$recipe->images->first()->name) }}"
@@ -128,9 +128,23 @@
                                             class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-20"></div>
 
                                         <!-- Recipe text -->
-                                        <div class="absolute bottom-3 left-3 z-30 text-white cursor-default">
+                                        <div class="absolute bottom-3 left-3 w-full z-30 text-white">
                                             <h4 class="font-medium text-sm mb-1 drop-shadow">{{ $recipe->title }}</h4>
-                                            <p class="text-xs drop-shadow">{{ $recipe->created_at->diffForHumans() }}</p>
+
+                                            <div class="flex items-center justify-between text-xs drop-shadow pe-6">
+                                                <p>{{ $recipe->created_at->diffForHumans() }}</p>
+
+                                                <p class="flex items-center gap-x-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4"
+                                                         fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                                                        <path fill-rule="evenodd"
+                                                              d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
+                                                              clip-rule="evenodd"/>
+                                                    </svg>
+                                                    <span>{{ $recipe->views }}</span>
+                                                </p>
+                                            </div>
                                         </div>
 
                                         @canany(['update', 'delete'], $recipe)
@@ -138,7 +152,8 @@
                                             <div
                                                 class="absolute top-2 right-2 z-40 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                                                 <div class="relative">
-                                                    <button id="dropdownMenuIconButton-{{ $loop->index }}"
+                                                    <button onclick="event.stopPropagation()"
+                                                            id="dropdownMenuIconButton-{{ $loop->index }}"
                                                             data-dropdown-toggle="dropdownDots-{{ $loop->index }}"
                                                             class="inline-flex items-center p-2 text-xs text-white bg-black/30 rounded-md hover:bg-black/50 transition-colors focus:outline-none focus:ring-0 cursor-pointer"
                                                             type="button">
