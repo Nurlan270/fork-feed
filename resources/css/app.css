@@ -10,6 +10,14 @@
 @source '../**/*.js';
 @source "../../node_modules/flowbite";
 
+@layer utilities {
+    @media (max-width: 250px) {
+        .hide-xs {
+            display: none !important;
+        }
+    }
+}
+
 @theme {
     --color-primary-50:  #e6f4e7;
     --color-primary-100: #c9e4cb;
