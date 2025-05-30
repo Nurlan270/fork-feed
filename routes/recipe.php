@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\IncrementViewsNumber;
 use App\Http\Controllers\Recipe\{CreateRecipeController,
     DeleteRecipeController,
     EditRecipeController,
@@ -15,4 +16,6 @@ Route::name('recipe.')->prefix('recipes')->middleware(['auth', 'verified'])->gro
     Route::delete('{recipe}', DeleteRecipeController::class)->name('delete');
 });
 
-Route::get('recipes/{recipe}', ShowRecipeController::class)->name('recipe.show');
+Route::get('recipes/{recipe}', ShowRecipeController::class)
+    ->middleware(IncrementViewsNumber::class)
+    ->name('recipe.show');
