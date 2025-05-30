@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Recipe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class RecipeImageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'recipe_id' => Recipe::factory(),
+            'name'      => 'CjHIOR9TXLqqeGBOngrxp1R6As6OUrHcH9Z7LJuE.png',
         ];
     }
 }
