@@ -39,4 +39,4 @@ Route::get('@{user:username}', function (User $user) {
         ->get();
 
     return view('profile', compact('user', 'ingredients'));
-});
+})->name('user.profile');
