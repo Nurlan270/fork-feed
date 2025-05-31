@@ -24,7 +24,7 @@ class UpdateRecipeController extends Controller
 
             notyf()->success(__('flasher.recipe.updated'));
 
-            return redirect()->route('profile');
+            return redirect()->route('user.profile');
         } catch (RemovalOfAllRecipeImagesException|RecipeImagesUploadLimitExceededException $e) {
             notyf()->error($e->getMessage());
         }

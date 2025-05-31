@@ -17,6 +17,6 @@ class StoreRecipeController extends Controller
 
         notyf()->success(__('flasher.recipe.created'));
 
-        return redirect()->route('profile');
+        return redirect()->route('user.profile');
     }
 }
