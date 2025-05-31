@@ -22,8 +22,8 @@ Route::middleware('auth')->group(function () {
             ->limit(12)
             ->get();
 
-        return view('profile', compact('user', 'ingredients'));
-    })->name('profile');
+        return view('user.profile', compact('user', 'ingredients'));
+    })->name('user.profile');
 });
 
 //  Others Profile
@@ -38,5 +38,11 @@ Route::get('@{user:username}', function (User $user) {
         ->limit(12)
         ->get();
 
-    return view('profile', compact('user', 'ingredients'));
-})->name('user.profile');
+    return view('user.profile', compact('user', 'ingredients'));
+})->name('tag-profile');
+
+Route::get('bookmarks', function () {
+    $bookmarks = auth()->user()->bookmarks()->get();
+
+    return view('user.bookmarks', compact('bookmarks'));
+})->name('user.bookmarks');
