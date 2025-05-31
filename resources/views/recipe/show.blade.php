@@ -40,7 +40,7 @@
                     <div
                         class="flex flex-col md:flex-row sm:flex-row sm:justify-between md:justify-between md:items-center md:gap-4 gap-6 mb-4 text-left px-4 border-b-2 border-b-gray-200 md:pb-7 pb-5">
                         <div>
-                            <h2 class="text-2xl md:text-3xl font-bold text-primary-800">{{ $recipe->title }}</h2>
+                            <h2 class="text-xl md:text-3xl font-bold text-primary-800">{{ $recipe->title }}</h2>
                         </div>
 
                         <livewire:recipe-action-buttons :$recipe/>
@@ -62,7 +62,7 @@
 
                         <!-- Author Info -->
                         <div class="rounded-lg p-4 shadow-sm">
-                            <a href="{{ route('user.profile', $recipe->author) }}" title="Go to Profile"
+                            <a href="{{ route('tag-profile', $recipe->author) }}" title="Go to Profile"
                                class="flex items-center space-x-4 border-b-2 border-b-gray-100 pb-5">
                                 <!-- Avatar -->
                                 <img src="{{ $recipe->author->avatar }}" alt="{{ $recipe->author->name }}"
