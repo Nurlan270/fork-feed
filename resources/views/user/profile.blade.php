@@ -80,7 +80,7 @@
                             <div class="grid grid-cols-2 gap-2">
                                 @foreach($ingredients as $ingredient)
                                     <a class="px-2 py-1 text-sm text-center bg-[#408D45]/10 text-[#408D45] rounded-md hover:bg-[#408D45]/20 transition-colors cursor-pointer">
-                                        {{ $ingredient->name }} ・ {{ $ingredient->usage_count }}
+                                        {{ $ingredient->name }}
                                     </a>
                                 @endforeach
                             </div>
@@ -128,10 +128,10 @@
                                             class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-20"></div>
 
                                         <!-- Recipe text -->
-                                        <div class="absolute bottom-3 left-3 w-full z-30 text-white">
+                                        <div class="absolute bottom-3 left-3 w-full z-30 text-white pe-6">
                                             <h4 class="font-medium text-sm mb-1 drop-shadow">{{ $recipe->title }}</h4>
 
-                                            <div class="flex items-center justify-between text-xs drop-shadow pe-6">
+                                            <div class="flex items-center justify-between text-xs drop-shadow">
                                                 <p>{{ $recipe->created_at->diffForHumans() }}</p>
 
                                                 <p class="flex items-center gap-x-1">
