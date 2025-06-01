@@ -110,9 +110,9 @@
                             @endif
                         </div>
 
-                        @if($user->recipes->isNotEmpty())
+                        @if($recipes->isNotEmpty())
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                                @foreach($user->recipes as $recipe)
+                                @foreach($recipes as $recipe)
                                     <div onclick="window.location='{{ route('recipe.show', compact('recipe')) }}'"
                                          class="group relative rounded-lg overflow-hidden hover:opacity-90 transition-opacity cursor-pointer">
 
@@ -219,6 +219,7 @@
                             @endif
                         @endif
                     </div>
+                    {{ $recipes->links() }}
                 </div>
             </div>
         </div>
