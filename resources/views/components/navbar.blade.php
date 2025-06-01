@@ -54,7 +54,7 @@
                                 <span>Profile</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="pb-2">
                             <a href="{{ route('user.bookmarks') }}"
                                class="flex items-center gap-x-2 px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
@@ -63,7 +63,7 @@
                                 <span>Bookmarks</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="border-t border-gray-100 dark:border-gray-600 pt-2">
                             <form id="logout" class="hidden" action="{{ route('logout') }}" method="POST">@csrf</form>
                             <button form="logout" type="submit"
                                     class="flex items-center gap-x-2 px-4 py-2 w-full text-left cursor-pointer text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white transition-colors">
