@@ -1,7 +1,7 @@
 <div>
     @canany(['subscribe', 'unsubscribe'], $user)
         @if($isFollowing)
-            <button wire:click="unfollow"
+            <button wire:click.prevent="unfollow"
                     class="flex items-center gap-x-2 px-4 py-1.5 bg-gray-200 text-gray-800 text-sm rounded-md hover:bg-gray-300 transition-colors cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="size-4">
@@ -11,7 +11,7 @@
                 Unfollow
             </button>
         @else
-            <button wire:click="follow"
+            <button wire:click.prevent="follow"
                     class="flex items-center gap-x-2 px-4 py-1.5 bg-primary-500 text-white text-sm rounded-md hover:bg-primary-700 transition-colors cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
                     <path
