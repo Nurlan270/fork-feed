@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
             ->where('recipes.user_id', $user->id)
             ->groupBy('ingredients.name')
             ->orderByDesc('usage_count')
-            ->limit(12)
+            ->limit(20)
             ->get();
 
         return view('user.profile', compact('user', 'recipes', 'ingredients'));
@@ -41,7 +41,7 @@ Route::get('@{user:username}', function (User $user) {
         ->where('recipes.user_id', $user->id)
         ->groupBy('ingredients.name')
         ->orderByDesc('usage_count')
-        ->limit(12)
+        ->limit(20)
         ->get();
 
     return view('user.profile', compact('user', 'recipes', 'ingredients'));
@@ -52,3 +52,15 @@ Route::get('bookmarks', function () {
 
     return view('user.bookmarks', compact('bookmarks'));
 })->middleware(['auth', 'verified'])->name('user.bookmarks');
+
+Route::get('@{user:username}/following', function (User $user) {
+    $following = $user->following()->get();
+
+    return view('user.following', compact('user', 'following'));
+})->name('user.following');
+
+Route::get('@{user:username}/followers', function (User $user) {
+    $followers = $user->followers()->get();
+
+    return view('user.followers', compact('user', 'followers'));
+})->name('user.followers');
