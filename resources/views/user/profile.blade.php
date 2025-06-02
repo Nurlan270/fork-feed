@@ -12,11 +12,11 @@
 
     <x-profile :$user>
         <x-slot:sidebar>
-            <div class="bg-white rounded-lg p-3 md:p-4 shadow-sm">
-                <h3 class="text-base md:text-lg font-semibold text-primary-800 mb-4">
-                    Most used ingredients
-                </h3>
-                @if($ingredients->isNotEmpty())
+            @if($ingredients->isNotEmpty())
+                <div class="bg-white rounded-lg p-3 md:p-4 shadow-sm">
+                    <h3 class="text-base md:text-lg font-semibold text-primary-800 mb-4">
+                        Most used ingredients
+                    </h3>
                     <div class="grid grid-cols-2 gap-2">
                         @foreach($ingredients as $ingredient)
                             <a class="px-2 py-1 text-sm text-center bg-[#408D45]/10 text-[#408D45] rounded-md hover:bg-[#408D45]/20 transition-colors cursor-pointer">
@@ -24,10 +24,8 @@
                             </a>
                         @endforeach
                     </div>
-                @else
-                    <p class="text-center text-gray-600 text-sm">No ingredients used yet.</p>
-                @endif
-            </div>
+                </div>
+            @endif
         </x-slot:sidebar>
 
         <div class="md:col-span-9">
@@ -150,12 +148,7 @@
                         @endforeach
                     </div>
                 @else
-                    @if(Route::is('profile'))
-                        <p class="text-center text-gray-600 text-sm">You haven’t shared any recipes yet.</p>
-                    @else
-                        <p class="text-center text-gray-600 text-sm">This user hasn’t shared any recipes
-                            yet.</p>
-                    @endif
+                    <p class="text-center text-gray-600 text-sm">No recipes yet</p>
                 @endif
             </div>
             {{ $recipes->links() }}

@@ -34,20 +34,23 @@
                     <h3 class="text-base md:text-lg font-semibold text-primary-800">
                         Profile Information
                     </h3>
-                    <div class="grid grid-cols-3 gap-2 md:gap-4 text-center py-6 border-b-2 border-b-gray-200">
-                        <a href="{{ route('tag-profile', compact('user')) }}">
+                    <div class="grid grid-cols-3 gap-x-2 md:gap-x-4 text-center py-3 border-b-2 border-b-gray-200">
+                        <a href="{{ route('user.tag-profile', compact('user')) }}"
+                           class="rounded py-3 hover:bg-gray-100 transition-colors ">
                                 <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
                                     {{ $user->recipes->count() }}
                                 </span>
                             <span class="block text-xs md:text-sm text-primary-900">Recipes</span>
                         </a>
-                        <a href="{{ route('user.followers', compact('user')) }}">
+                        <a href="{{ route('user.followers', compact('user')) }}"
+                           class="rounded py-3 hover:bg-gray-100 transition-colors">
                                 <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
                                     {{ $user->followers->count() }}
                                 </span>
                             <span class="block text-xs md:text-sm text-primary-900">Followers</span>
                         </a>
-                        <a href="{{ route('user.following', compact('user')) }}">
+                        <a href="{{ route('user.following', compact('user')) }}"
+                           class="rounded py-3 hover:bg-gray-100 transition-colors">
                                 <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
                                     {{ $user->following->count() }}
                                 </span>

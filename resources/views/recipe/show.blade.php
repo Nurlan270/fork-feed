@@ -58,11 +58,11 @@
                 <!-- Right Column: Author + Ingredients -->
                 <div class="md:col-span-3 space-y-4">
                     <!-- Right Column: Author and Info Section -->
-                    <div class="md:col-span-3 space-y-4 sticky top-10">
+                    <div class="md:col-span-3 space-y-4 sticky top-5">
 
                         <!-- Author Info -->
                         <div class="rounded-lg p-4 shadow-sm">
-                            <a href="{{ route('tag-profile', $recipe->author) }}" title="Go to Profile"
+                            <a href="{{ route('user.tag-profile', $recipe->author) }}" title="Go to Profile"
                                class="flex items-center space-x-4 border-b-2 border-b-gray-100 pb-5">
                                 <!-- Avatar -->
                                 <img src="{{ $recipe->author->avatar }}" alt="{{ $recipe->author->name }}"
