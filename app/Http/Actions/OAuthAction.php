@@ -3,7 +3,7 @@
 namespace App\Http\Actions;
 
 use App\Models\User;
-use App\Notifications\UserPassword;
+use App\Notifications\AccountCreated;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -54,7 +54,7 @@ class OAuthAction
         ]);
 
         $user->markEmailAsVerified();
-        $user->notify(new UserPassword($password));
+        $user->notify(new AccountCreated($password));
 
         return $user;
     }
