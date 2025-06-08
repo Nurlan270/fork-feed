@@ -15,8 +15,10 @@ class IncrementViewsNumber
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $response = $next($request);
+
         $request->recipe->increment('views');
 
-        return $next($request);
+        return $response;
     }
 }
