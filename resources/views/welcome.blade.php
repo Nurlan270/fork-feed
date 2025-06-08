@@ -25,7 +25,7 @@
                         Get Started
                     </a>
                 @endguest
-                <a href=""
+                <a href="{{ route('explore') }}"
                    class="inline-flex items-center justify-center px-6 py-3 bg-white text-primary-500 rounded-lg hover:bg-gray-100 transition-colors">
                     Explore Recipes
                 </a>
@@ -120,7 +120,7 @@
             </div>
 
             <div class="mt-8 text-center">
-                <a href=""
+                <a href="{{ route('explore') }}"
                    class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors">
                     Browse More Recipes
                 </a>
