@@ -19,7 +19,7 @@ class RecipeImageFactory extends Factory
     {
         return [
             'recipe_id' => Recipe::factory(),
-            'name'      => 'CjHIOR9TXLqqeGBOngrxp1R6As6OUrHcH9Z7LJuE.png',
+            'path'      => 'recipe-images/placeholder.jpg', // Placeholder image name
         ];
     }
 }

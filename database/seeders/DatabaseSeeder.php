@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,8 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Recipe::factory(10)->create([
-            'user_id' => 74, // Change to User ID you want to create recipes for
-        ]);
+        //  Create users
+        //  If you want to create users with associated recipes, add `->withRecipes()` to the factory call
+        User::factory(100)->withRecipes()->create();
+
+        //  Create recipes for a specific user
+        //  Recipe::factory(100)->create([
+        //    'user_id' => 1, // Specify User ID you want to create recipes for
+        //  ]);
     }
 }

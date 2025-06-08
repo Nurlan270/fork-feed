@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -27,7 +29,7 @@ class UserFactory extends Factory
             'name'              => $this->faker->name(),
             'username'          => $this->faker->userName(),
             'email'             => $this->faker->unique()->safeEmail(),
-            'avatar'            => $this->faker->imageUrl(),
+            'avatar'            => asset('media/logo-mini.png'),
             'email_verified_at' => now(),
             'password'          => static::$password ??= Hash::make('password'),
             'remember_token'    => Str::random(10),
@@ -42,5 +44,21 @@ class UserFactory extends Factory
         return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    /**
+     * Create a user with associated recipes.
+     *
+     * @param int $recipesCount Count of recipes to create for each user
+     *
+     * @return \Database\Factories\UserFactory
+     */
+    public function withRecipes(int $recipesCount = 2): UserFactory
+    {
+        return $this->afterCreating(function (User $user) use ($recipesCount) {
+            Recipe::factory($recipesCount)->create([
+                'user_id' => $user->id,
+            ]);
+        });
     }
 }

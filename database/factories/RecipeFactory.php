@@ -24,7 +24,7 @@ class RecipeFactory extends Factory
             'user_id'     => User::factory(),
             'title'       => $this->faker->words(asText: true),
             'description' => $this->faker->sentences(200, asText: true),
-            'views'       => $this->faker->numberBetween(0, 100),
+            'views'       => $this->faker->numberBetween(0, 100000),
         ];
     }
 
