@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         //  Create users
         //  If you want to create users with associated recipes, add `->withRecipes()` to the factory call
-        User::factory(100)->withRecipes()->create();
+        User::factory(100)->create();
 
         //  Create recipes for a specific user
         //  Recipe::factory(100)->create([
