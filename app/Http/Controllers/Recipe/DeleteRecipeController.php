@@ -18,7 +18,7 @@ class DeleteRecipeController extends Controller
         Gate::authorize('delete', $recipe);
 
         $recipe->images()->each(function ($image) {
-            Storage::delete('recipe-images/' . $image->name);
+            Storage::delete($image->path);
         });
 
         $recipe->delete();
