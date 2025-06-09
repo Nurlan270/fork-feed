@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class RecipeImage extends Model
 {
@@ -14,6 +16,15 @@ class RecipeImage extends Model
 
     protected $fillable = [
         'recipe_id',
-        'name'
+        'path',
     ];
+
+    protected function path(): Attribute
+    {
+        return Attribute::get(
+            fn(string $value) => Storage::exists($value)
+                ? Storage::url($value)
+                : asset('media/404-image.webp')
+        );
+    }
 }
