@@ -76,10 +76,10 @@
                             @foreach ($recipe->images as $image)
                                 <div class="swiper-slide relative flex justify-center items-center image-item group"
                                      data-id="{{ $image->id }}"
-                                     data-name="{{ $image->name }}">
+                                     data-path="{{ $image->path }}">
 
                                     <!-- Image -->
-                                    <img src="{{ Storage::url('recipe-images/'.$image->name) }}"
+                                    <img src="{{ $image->path }}"
                                          alt="Recipe image"
                                          class="max-h-64 w-auto object-contain mx-auto rounded image-display transition duration-300"/>
 
@@ -167,7 +167,7 @@
                 btn.addEventListener('click', function () {
                     const imageItem = this.closest('.image-item');
                     const id = imageItem.dataset.id;
-                    const name = imageItem.dataset.name;
+                    const path = imageItem.dataset.path;
 
                     const overlay = imageItem.querySelector('.deleted-overlay');
                     const iconDelete = this.querySelector('.icon-delete');
@@ -178,7 +178,7 @@
                         iconDelete.classList.add('hidden');
                         iconUndo.classList.remove('hidden');
 
-                        deletedImages[id] = name;
+                        deletedImages[id] = path;
                     } else {
                         overlay.classList.add('hidden');
                         iconDelete.classList.remove('hidden');
