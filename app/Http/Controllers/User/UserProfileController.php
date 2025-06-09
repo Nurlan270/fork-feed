@@ -17,7 +17,10 @@ class UserProfileController extends Controller
     {
         $user ??= auth()->user();
 
-        $recipes = Recipe::query()->where('user_id', $user->id)->paginate(12);
+        $recipes = Recipe::with(['firstImage', 'limitedIngredients'])
+            ->where('user_id', $user->id)
+            ->latest()
+            ->paginate(35);
 
         $ingredients = DB::table('ingredient_recipe')
             ->join('recipes', 'ingredient_recipe.recipe_id', '=', 'recipes.id')
