@@ -14,7 +14,7 @@
                         @foreach ($recipe->images as $image)
                             <div class="swiper-slide flex justify-center items-center bg-gray-50">
                                 <img
-                                    src="{{ Storage::url('recipe-images/'.$image->name) }}"
+                                    src="{{ $image->path }}"
                                     alt="Recipe image"
                                     class="w-full h-full object-contain"
                                 />
@@ -39,7 +39,7 @@
                     <!-- Title and Buttons -->
                     <div
                         class="flex flex-col md:flex-row sm:flex-row sm:justify-between md:justify-between md:items-center md:gap-4 gap-6 mb-4 text-left px-4 border-b-2 border-b-gray-200 md:pb-7 pb-5">
-                        <div>
+                        <div class="">
                             <h2 class="text-xl md:text-3xl font-bold text-primary-800">{{ $recipe->title }}</h2>
                         </div>
 

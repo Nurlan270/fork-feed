@@ -57,8 +57,10 @@
                         <li class="pb-2">
                             <a href="{{ route('user.bookmarks') }}"
                                class="flex items-center gap-x-2 px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"/>
                                 </svg>
                                 <span>Bookmarks</span>
                             </a>
@@ -91,19 +93,36 @@
         @endauth
 
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul class="flex flex-col gap-y-2 font-medium p-2 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
-                    <a href="#"
-                       class="block py-2 px-3 text-white bg-primary-700 rounded-sm md:bg-transparent md:text-primary-700 md:p-0 md:dark:text-primary-500"
-                       aria-current="page">Home</a>
+                    <a href="{{ route('explore') }}"
+                       class="block py-2 px-3 text-gray-900 rounded-sm
+                              md:p-0 md:bg-transparent md:hover:bg-transparent md:dark:hover:bg-transparent
+                              hover:bg-gray-100 dark:hover:bg-gray-700
+                              hover:text-primary-700 dark:hover:text-primary-500
+                              {{ markRoute('explore', 'text-white bg-primary-700 md:text-primary-700 md:dark:text-primary-500') }}">
+                        Explore
+                    </a>
                 </li>
                 <li>
-                    <a href="#"
-                       class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary-700 md:p-0 dark:text-white md:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors">About</a>
+                    <a href="{{ route('welcome') }}"
+                       class="block py-2 px-3 text-gray-900 rounded-sm
+                              md:p-0 md:bg-transparent md:hover:bg-transparent md:dark:hover:bg-transparent
+                              hover:bg-gray-100 dark:hover:bg-gray-700
+                              hover:text-primary-700 dark:hover:text-primary-500
+                              {{ markRoute('#', 'text-white bg-primary-700 md:text-primary-700 md:dark:text-primary-500') }}">
+                        About
+                    </a>
                 </li>
                 <li>
-                    <a href="#"
-                       class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary-700 md:p-0 dark:text-white md:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors">Services</a>
+                    <a href="{{ route('welcome') }}"
+                       class="block py-2 px-3 text-gray-900 rounded-sm
+                              md:p-0 md:bg-transparent md:hover:bg-transparent md:dark:hover:bg-transparent
+                              hover:bg-gray-100 dark:hover:bg-gray-700
+                              hover:text-primary-700 dark:hover:text-primary-500
+                              {{ markRoute('#', 'text-white bg-primary-700 md:text-primary-700 md:dark:text-primary-500') }}">
+                        Services
+                    </a>
                 </li>
             </ul>
         </div>
