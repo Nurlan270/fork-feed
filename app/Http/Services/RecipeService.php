@@ -2,8 +2,8 @@
 
 namespace App\Http\Services;
 
-use App\Exceptions\RemovalOfAllRecipeImagesException;
 use App\Exceptions\RecipeImagesUploadLimitExceededException;
+use App\Exceptions\RemovalOfAllRecipeImagesException;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\RecipeImage;
@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\Storage;
 
 class RecipeService
 {
-    public function createRecipe(FormRequest $request)
+    /**
+     * @throws \App\Exceptions\RecipeImagesUploadLimitExceededException
+     */
+    public function createRecipe(FormRequest $request): void
     {
         $ingredients = $this->createIngredients($request);
 
@@ -26,6 +29,10 @@ class RecipeService
         $this->storeImages($request, $recipe);
     }
 
+    /**
+     * @throws \App\Exceptions\RemovalOfAllRecipeImagesException
+     * @throws \App\Exceptions\RecipeImagesUploadLimitExceededException
+     */
     public function updateRecipe(FormRequest $request, Recipe $recipe): void
     {
         $recipe->update($request->only('title', 'description'));
@@ -66,7 +73,7 @@ class RecipeService
         });
 
         $recipe->images()->createMany(
-            $names->map(fn($name) => ['name' => $name])->toArray()
+            $names->map(fn($name) => ['path' => 'recipe-images/' . $name])->toArray()
         );
     }
 
