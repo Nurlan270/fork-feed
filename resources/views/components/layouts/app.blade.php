@@ -19,10 +19,10 @@
     @livewireStyles
     @stack('styles')
 </head>
-<body class="bg-gray-50">
-    @yield('content')
+    <body class="bg-gray-50">
+        @yield('content')
 
-    @livewireScripts
-    @stack('scripts')
-</body>
+        @livewireScripts
+        @stack('scripts')
+    </body>
 </html>
