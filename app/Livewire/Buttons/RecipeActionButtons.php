@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Buttons;
 
 use App\Enums\ReactionType;
 use App\Models\Recipe;
