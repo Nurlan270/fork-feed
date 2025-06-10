@@ -51,7 +51,7 @@
                     @if($recipes->isNotEmpty())
                         <div class="grid grid-cols-1 gap-y-5">
                             @foreach($recipes as $recipe)
-                                <x-recipe-card :$recipe :key="$recipe->id">
+                                <x-recipe-card :$recipe>
                                     <x-slot:buttons>
                                         @canany(['update', 'delete'], $recipe)
                                             <div class="flex items-center gap-1 flex-shrink-0">
@@ -74,9 +74,9 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button
-                                                        onclick="confirm('Are you sure you want to delete this recipe?')"
-                                                        class="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors cursor-pointer"
-                                                        title="Delete Recipe">
+                                                            onclick="return confirm('Are you sure you want to delete this recipe?')"
+                                                            class="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors cursor-pointer"
+                                                            title="Delete Recipe">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                              fill="none"
                                                              viewBox="0 0 24 24" stroke-width="1.5"
@@ -97,7 +97,7 @@
                         <p class="text-center text-gray-600 text-sm">No recipes yet</p>
                     @endif
                 </div>
-                {{ $recipes->links('pagination::tailwind') }}
+                {{ $recipes->links() }}
             </div>
         </x-profile>
     </div>
