@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Enums\ReactionType;
 use App\Models\Recipe;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
@@ -24,7 +24,7 @@ class Explore extends Component
         ]);
     }
 
-    protected function recipes(): Collection
+    protected function recipes(): LengthAwarePaginator
     {
         $recipeIds = Recipe::search($this->search)->get()->pluck('id');
 
@@ -35,7 +35,7 @@ class Explore extends Component
             ])
             ->whereIn('id', $recipeIds)
             ->orderByRaw($this->getSortColumn())
-            ->get();
+            ->paginate(50);
     }
 
     protected function getSortColumn(): string
