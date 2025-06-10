@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('components.layouts.app')
 
 @section('page.title', 'Reset Password')
 
@@ -61,7 +61,8 @@
                 </button>
 
                 <p class="text-sm text-gray-600 text-center">
-                    Remember your password? <a href="{{ route('login') }}" class="text-primary-600 hover:text-primary-500">Sign in</a>
+                    Remember your password? <a href="{{ route('login') }}"
+                                               class="text-primary-600 hover:text-primary-500">Sign in</a>
                 </p>
             </form>
         </div>

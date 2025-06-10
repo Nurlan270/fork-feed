@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('components.layouts.app')
 
 @section('page.title', $recipe->title)
 
@@ -43,7 +43,7 @@
                             <h2 class="text-xl md:text-3xl font-bold text-primary-800">{{ $recipe->title }}</h2>
                         </div>
 
-                        <livewire:recipe-action-buttons :$recipe/>
+                        <livewire:buttons.recipe-action-buttons :$recipe/>
                     </div>
 
                     <!-- Description -->

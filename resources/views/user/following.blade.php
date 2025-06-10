@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('components.layouts.app')
 
 @section('page.title', $user->name . "'s Following List")
 
@@ -16,7 +16,8 @@
 
                 <div class="flex flex-col">
                     @forelse($following as $user)
-                        <a class="flex items-center justify-between border-b-2 border-b-gray-200 py-5" href="{{ route('user.tag-profile', compact('user')) }}">
+                        <a class="flex items-center justify-between border-b-2 border-b-gray-200 py-5"
+                           href="{{ route('user.tag-profile', compact('user')) }}">
                             <div class="flex gap-x-4 items-center">
                                 <img src="{{ $user->avatar }}" alt="Avatar" class="size-14 rounded-4xl">
                                 <div class="flex flex-col justify-center gap-y-1">

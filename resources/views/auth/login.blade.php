@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('components.layouts.app')
 
 @section('page.title', 'Sign In')
 
 @section('content')
-    <x-navbar />
+    <x-navbar/>
 
     <main class="min-h-8 flex items-center justify-center py-5">
         <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
@@ -65,7 +65,8 @@
                     </button>
 
                     <span class="text-sm text-gray-500">Doesn't have an account? <a
-                            class="text-primary-600 hover:underline" href="{{ route('auth.register') }}">Sign Up</a></span>
+                            class="text-primary-600 hover:underline"
+                            href="{{ route('auth.register') }}">Sign Up</a></span>
 
                     <div class="relative mt-4">
                         <div class="absolute inset-0 flex items-center">

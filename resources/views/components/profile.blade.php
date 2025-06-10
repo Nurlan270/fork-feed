@@ -23,7 +23,7 @@
                 <p class="text-sm md:text-base text-primary-900">{{ '@' . $user->username }}</p>
             </div>
 
-            <livewire:subscription-button :$user/>
+            <livewire:buttons.subscription-button :$user/>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mb-4 md:mb-6">

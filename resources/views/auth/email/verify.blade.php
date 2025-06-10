@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('components.layouts.app')
 
 @section('page.title', 'Email Verification')
 
@@ -7,8 +7,10 @@
           style="background-image: url('{{ asset('media/auth-bg.jpg') }}')">
         <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
             <div class="text-center mb-8">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto text-primary-500 mb-4 size-12">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="mx-auto text-primary-500 mb-4 size-12">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"/>
                 </svg>
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">
                     Email Verification Required
@@ -36,7 +38,8 @@
                     Resend Verification Link
                 </button>
 
-                <form id="resend-email" class="hidden" action="{{ route('verification.send') }}" method="POST">@csrf</form>
+                <form id="resend-email" class="hidden" action="{{ route('verification.send') }}"
+                      method="POST">@csrf</form>
             </div>
         </div>
     </main>

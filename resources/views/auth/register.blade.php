@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('components.layouts.app')
 
 @section('page.title', 'Sign Up')
 
 @section('content')
-    <x-navbar />
+    <x-navbar/>
 
     <main class="flex items-start justify-center py-5">
         <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
