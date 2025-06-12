@@ -25,7 +25,7 @@
                                     <p>{{ '@'.$user->username }}</p>
                                 </div>
                             </div>
-                            <livewire:subscription-button :$user/>
+                            <livewire:buttons.subscription-button :$user/>
                         </a>
                     @empty
                         <p class="text-sm text-center text-gray-600 mt-6">No followers yet</p>
