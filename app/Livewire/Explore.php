@@ -6,11 +6,16 @@ use App\Enums\ReactionType;
 use App\Models\Recipe;
 use Illuminate\Contracts\View\View;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Explore extends Component
 {
+    use WithPagination;
+
     #[Url(as: 'q')]
     public string $search = '';
 
@@ -24,18 +29,44 @@ class Explore extends Component
         ]);
     }
 
+    public function deleteRecipe(string $id): void
+    {
+        $recipe = Recipe::findOrFail($id);
+
+        Gate::authorize('delete', $recipe);
+
+        $imagePaths = $recipe->images()->chunkMap(fn($image) => $image->relativePath())->toArray();
+
+        Storage::delete($imagePaths);
+
+        $recipe->delete();
+
+        notyf()->success(__('flasher.recipe.deleted'));
+    }
+
+    public function updated($property): void
+    {
+        if (in_array($property, ['search', 'sort'])) {
+            $this->resetPage();
+        }
+    }
+
     protected function recipes(): LengthAwarePaginator
     {
-        $recipeIds = Recipe::search($this->search)->get()->pluck('id');
-
-        return Recipe::with(['firstImage', 'author', 'limitedIngredients'])
+        $query = Recipe::with(['firstImage', 'author', 'limitedIngredients'])
             ->withCount([
                 'reactions as likes_count'    => fn($q) => $q->where('type', ReactionType::LIKE),
                 'reactions as dislikes_count' => fn($q) => $q->where('type', ReactionType::DISLIKE),
             ])
-            ->whereIn('id', $recipeIds)
-            ->orderByRaw($this->getSortColumn())
-            ->paginate(50);
+            ->orderByRaw($this->getSortColumn());
+
+        if ($this->search) {
+            $ids = Recipe::search($this->search)->get()->pluck('id');
+
+            $query->whereIn('id', $ids);
+        }
+
+        return $query->paginate(50);
     }
 
     protected function getSortColumn(): string
