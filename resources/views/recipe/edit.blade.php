@@ -76,7 +76,7 @@
                             @foreach ($recipe->images as $image)
                                 <div class="swiper-slide relative flex justify-center items-center image-item group"
                                      data-id="{{ $image->id }}"
-                                     data-path="{{ $image->path }}">
+                                     data-path="{{ $image->relativePath() }}">
 
                                     <!-- Image -->
                                     <img src="{{ $image->path }}"
@@ -90,8 +90,7 @@
 
                                     <!-- Button -->
                                     <button type="button"
-                                            class="delete-btn absolute right-2 top-2 bg-gray-500/50 hover:bg-gray-500/65 cursor-pointer text-white rounded-full w-8 h-8 flex items-center justify-center text-base shadow transition z-20"
-                                            data-id="{{ $image->id }}">
+                                            class="delete-btn absolute right-2 top-2 bg-gray-500/50 hover:bg-gray-500/65 cursor-pointer text-white rounded-full w-8 h-8 flex items-center justify-center text-base shadow transition z-20">
                                         <!-- Delete icon -->
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.5" stroke="currentColor" class="size-4 icon-delete">
