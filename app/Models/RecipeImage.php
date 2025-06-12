@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class RecipeImage extends Model
 {
@@ -26,5 +27,10 @@ class RecipeImage extends Model
                 ? Storage::url($value)
                 : asset('media/404-image.webp')
         );
+    }
+
+    public function relativePath(): string
+    {
+        return Str::remove(Storage::url('/'), $this->path);
     }
 }
