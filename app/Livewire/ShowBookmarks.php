@@ -18,7 +18,7 @@ class ShowBookmarks extends Component
         $bookmarks = auth()->user()->bookmarks()
             ->with('firstImage')
             ->latest()
-            ->paginate(2);
+            ->paginate(50);
 
         if ($bookmarks->isEmpty() && $bookmarks->currentPage() > 1) {
             $this->previousPage();
