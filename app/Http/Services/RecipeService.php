@@ -91,10 +91,10 @@ class RecipeService
         }
 
         $ids = $deletedImages->keys();
-        $names = $deletedImages->values()->map(fn($name) => 'recipe-images/' . $name);
+        $imagePaths = $deletedImages->values()->toArray();
+
+        Storage::delete($imagePaths);
 
         RecipeImage::whereIn('id', $ids)->delete();
-
-        Storage::delete($names->toArray());
     }
 }
