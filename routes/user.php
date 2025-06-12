@@ -1,6 +1,5 @@
 <?php
 
-use App\Livewire\User\Bookmarks;
 use App\Http\Controllers\User\{
     UserProfileController,
     UserFollowController,
@@ -16,6 +15,6 @@ Route::name('user.')->prefix('@{user:username}')->group(function () {
     Route::get('followers', [UserFollowController::class, 'followers'])->name('followers');
 });
 
-Route::get('bookmarks', Bookmarks::class)
+Route::view('bookmarks', 'user.bookmarks')
     ->middleware(['auth', 'verified'])
     ->name('user.bookmarks');
