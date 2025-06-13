@@ -44,3 +44,26 @@
     --swiper-pagination-bullet-width: 6px;
     --swiper-pagination-bullet-height: 6px;
 }
+
+body {
+    padding-top: 60px;
+}
+
+#navbar {
+    z-index: 1000;
+}
+
+#navbar {
+    transition: transform 0.3s ease-in-out,
+    background-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    backdrop-filter 0.3s ease-in-out;
+}
+
+#navbar.navbar-hidden {
+    transform: translateY(-100%);
+}
+
+#navbar.navbar-visible {
+    transform: translateY(0);
+}
