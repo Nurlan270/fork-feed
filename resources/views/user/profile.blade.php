@@ -10,5 +10,5 @@
 @section('content')
     <x-navbar/>
 
-    <livewire:show-user-recipes :user="$user ?? null"/>
+    <livewire:user.show-recipes :user="$user ?? null"/>
 @endsection

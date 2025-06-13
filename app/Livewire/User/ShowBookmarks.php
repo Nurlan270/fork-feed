@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
-use Illuminate\Contracts\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
@@ -24,6 +23,6 @@ class ShowBookmarks extends Component
             $this->previousPage();
         }
 
-        return view('livewire.show-bookmarks', compact('bookmarks'));
+        return view('livewire.user.show-bookmarks', compact('bookmarks'));
     }
 }

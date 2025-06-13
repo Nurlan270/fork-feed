@@ -10,6 +10,6 @@
             <h2 class="text-3xl font-semibold">Bookmarks</h2>
         </div>
 
-        <livewire:show-bookmarks/>
+        <livewire:user.show-bookmarks/>
     </div>
 @endsection

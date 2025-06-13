@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
 use App\Models\Ingredient;
 use App\Models\Recipe;
@@ -11,7 +11,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ShowUserRecipes extends Component
+class ShowRecipes extends Component
 {
     use WithPagination;
 
@@ -24,7 +24,7 @@ class ShowUserRecipes extends Component
 
     public function render(): View
     {
-        return view('livewire.show-user-recipes', [
+        return view('livewire.user.show-recipes', [
             'recipes'     => $this->recipes(),
             'ingredients' => $this->ingredients(),
         ]);
