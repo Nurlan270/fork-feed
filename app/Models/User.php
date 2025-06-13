@@ -52,6 +52,11 @@ class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
         ];
     }
 
+    public function getRouteKeyName(): string
+    {
+        return 'username';
+    }
+
     public function recipes(): HasMany
     {
         return $this->hasMany(Recipe::class)->latest();
