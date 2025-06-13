@@ -7,7 +7,8 @@
                 </h3>
                 <div class="grid grid-cols-2 gap-2">
                     @foreach($ingredients as $ingredient)
-                        <a class="px-2 py-1 text-sm text-center bg-[#408D45]/10 text-[#408D45] rounded-md hover:bg-[#408D45]/20 transition-colors cursor-pointer">
+                        <a href="{{ route('recipe.by-ingredient', compact('ingredient')) }}"
+                           class="px-2 py-1 text-sm text-center bg-[#408D45]/10 text-[#408D45] rounded-md hover:bg-[#408D45]/20 transition-colors cursor-pointer">
                             {{ $ingredient->name }}
                         </a>
                     @endforeach
