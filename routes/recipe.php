@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Ingredient;
 use App\Http\Middleware\IncrementViewsNumber;
 use App\Http\Controllers\Recipe\{
     CreateRecipeController,
@@ -19,3 +20,7 @@ Route::name('recipe.')->prefix('recipes')->middleware(['auth', 'verified'])->gro
 Route::get('recipes/{recipe}', ShowRecipeController::class)
     ->middleware(IncrementViewsNumber::class)
     ->name('recipe.show');
+
+Route::get('recipes/ingredient/{ingredient:slug}', function (Ingredient $ingredient) {
+    return view('recipe.by-ingredient', compact('ingredient'));
+})->name('recipe.by-ingredient');
