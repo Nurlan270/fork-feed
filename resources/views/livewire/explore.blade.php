@@ -14,6 +14,7 @@
 
                 <!-- Loading Spinner -->
                 <svg wire:loading.delay
+                     wire:target="search, sort"
                      viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"
                      class="absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 animate-spin">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
