@@ -50,7 +50,7 @@ class OAuthAction
                 checkForExistence: true
             ),
             'avatar'   => $oauthUser->getAvatar(),
-            'password' => $password,
+            'password' => bcrypt($password),
         ]);
 
         $user->markEmailAsVerified();
