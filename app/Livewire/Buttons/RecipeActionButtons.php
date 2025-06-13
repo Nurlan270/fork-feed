@@ -28,6 +28,8 @@ class RecipeActionButtons extends Component
 
     public function like(): void
     {
+        $this->authorize('like', $this->recipe);
+
         auth()->user()->reactions()->syncWithoutDetaching([
             $this->recipe->id => ['type' => ReactionType::LIKE],
         ]);
@@ -38,6 +40,8 @@ class RecipeActionButtons extends Component
 
     public function dislike(): void
     {
+        $this->authorize('dislike', $this->recipe);
+
         auth()->user()->reactions()->syncWithoutDetaching([
             $this->recipe->id => ['type' => ReactionType::DISLIKE],
         ]);
@@ -56,6 +60,8 @@ class RecipeActionButtons extends Component
 
     public function bookmark(): void
     {
+        $this->authorize('bookmark', $this->recipe);
+
         auth()->user()->bookmarks()->syncWithoutDetaching($this->recipe->id);
 
         $this->bookmarked = true;
