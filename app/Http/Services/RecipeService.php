@@ -53,7 +53,7 @@ class RecipeService
             ->filter()
             ->unique()
             ->map(function ($name) {
-                return Ingredient::firstOrCreate(['name' => ucfirst($name)])->id;
+                return Ingredient::firstOrCreate(['name' => $name])->id;
             })->toArray();
     }
 
