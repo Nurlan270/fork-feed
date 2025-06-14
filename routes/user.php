@@ -1,11 +1,13 @@
 <?php
 
-use App\Models\User;
 use App\Http\Controllers\User\UserFollowController;
+use App\Models\User;
 
-Route::view('profile', 'user.profile')
-    ->middleware('auth')
-    ->name('user.profile');
+Route::name('user.')->middleware('auth')->group(function () {
+    Route::view('profile', 'user.profile')->name('profile');
+    Route::view('bookmarks', 'user.bookmarks')->name('bookmarks');
+    Route::view('settings', 'user.settings')->name('settings');
+});
 
 Route::name('user.')->prefix('@{user}')->group(function () {
     Route::get('/', function (User $user) {
@@ -15,7 +17,3 @@ Route::name('user.')->prefix('@{user}')->group(function () {
     Route::get('following', [UserFollowController::class, 'following'])->name('following');
     Route::get('followers', [UserFollowController::class, 'followers'])->name('followers');
 });
-
-Route::view('bookmarks', 'user.bookmarks')
-    ->middleware(['auth', 'verified'])
-    ->name('user.bookmarks');
