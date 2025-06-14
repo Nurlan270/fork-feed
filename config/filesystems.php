@@ -65,6 +65,15 @@ return [
             'report' => false,
         ],
 
+        'banners' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/banners'),
+            'url' => env('APP_URL') . '/banners',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -94,6 +103,7 @@ return [
     'links' => [
         public_path('storage/avatars') => storage_path('app/public/avatars'),
         public_path('storage/recipe-images') => storage_path('app/public/recipe-images'),
+        public_path('storage/banners') => storage_path('app/public/banners'),
     ],
 
 ];
