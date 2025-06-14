@@ -28,4 +28,9 @@ return [
         'removal_of_all_recipe_images'        => "Can't remove all recipe images",
         'recipe_images_upload_limit_exceeded' => "Recipe can't have more than 20 images",
     ],
+
+    //  Settings
+    'settings'            => [
+        'updated' => 'Settings updated',
+    ],
 ];
