@@ -14,15 +14,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'login' => ['required', 'string', 'regex:/^\S*$/'],
+            'login'    => ['required', 'string', 'regex:/^\S*$/'],
             'password' => ['required', 'string'],
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'login.regex' => 'Email address / Username can\'t contain spaces.',
         ];
     }
 }

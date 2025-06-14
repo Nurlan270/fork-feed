@@ -15,20 +15,11 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:50', 'regex:/^[A-Za-zА-Яа-яЁё ]+$/u'],
-            'username' => ['required', 'string', 'unique:users,username', 'max:50', 'regex:/^[A-Za-z0-9._-]+$/'],
-            'email' => ['required', 'string', 'email', 'unique:users,email'],
-            'password' => ['required', 'string', 'confirmed', 'min:8'],
+            'name'                 => ['required', 'string', 'max:100', 'regex:/^[A-Za-zА-Яа-яЁё ]+$/u'],
+            'username'             => ['required', 'string', 'unique:users,username', 'max:100', 'regex:/^[A-Za-z0-9._-]+$/'],
+            'email'                => ['required', 'string', 'email', 'unique:users,email'],
+            'password'             => ['required', 'string', 'confirmed', 'min:8'],
             'g-recaptcha-response' => ['required', 'captcha'],
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'name.regex' => 'Only alphabetical characters and space are allowed',
-            'username.regex' => 'Username can\'t contain spaces, or any special characters except: ., -, _',
-            'email.unique' => 'User with this email already exists'
         ];
     }
 }
