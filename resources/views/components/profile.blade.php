@@ -4,7 +4,7 @@
             <div class="relative w-full mb-6 md:mb-10">
                 <!-- Banner -->
                 <div class="group relative">
-                    <img src="{{ asset('media/recipe-create.jpg') }}" alt="Profile Banner"
+                    <img src="{{ $user->banner }}" alt="Profile Banner"
                          class="w-full h-40 md:h-48 rounded-lg object-cover">
                 </div>
 
