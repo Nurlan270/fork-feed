@@ -5,11 +5,13 @@ namespace App\Models;
 use App\Enums\ReactionType;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
 {
@@ -26,6 +28,7 @@ class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
         'username',
         'email',
         'avatar',
+        'banner',
         'password',
     ];
 
@@ -50,6 +53,15 @@ class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    protected function banner(): Attribute
+    {
+        return Attribute::get(
+            fn($value) => $value
+                ? Storage::url($value)
+                : asset('media/default-banner.jpg')
+        );
     }
 
     public function getRouteKeyName(): string
