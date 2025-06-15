@@ -8,21 +8,17 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <title>
-        @if(Route::is('welcome'))
-            ForkFeed - Cook. Share. Connect.
-        @else
-            @yield('page.title') | {{ config('app.name') }}
-        @endif
+        @yield('page.title') | {{ config('app.name') }}
     </title>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     @stack('styles')
 </head>
-    <body class="bg-gray-50">
-        @yield('content')
+<body class="bg-gray-50">
+    @yield('content')
 
-        @livewireScripts
-        @stack('scripts')
-    </body>
+    @livewireScripts
+    @stack('scripts')
+</body>
 </html>
