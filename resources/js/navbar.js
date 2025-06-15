@@ -1,17 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     let lastScrollTop = 0;
     let isScrollingUp = false;
-    let scrollThreshold = 10; // Minimum scroll distance before triggering hide/show
+    let scrollThreshold = 50; // Minimum scroll distance before triggering hide/show
     const navbar = document.getElementById('navbar');
 
     // Add shadow and backdrop blur when scrolled
     function updateNavbarStyle() {
         if (window.scrollY > 0) {
-            navbar.classList.add('shadow-lg', 'backdrop-blur-sm', 'bg-white/95', 'dark:bg-gray-900/95');
-            navbar.classList.remove('bg-white', 'dark:bg-gray-900');
+            navbar.classList.add('shadow-md', 'backdrop-blur-sm');
         } else {
-            navbar.classList.remove('shadow-lg', 'backdrop-blur-sm', 'bg-white/95', 'dark:bg-gray-900/95');
-            navbar.classList.add('bg-white', 'dark:bg-gray-900');
+            navbar.classList.remove('shadow-md', 'backdrop-blur-sm');
         }
     }
 
