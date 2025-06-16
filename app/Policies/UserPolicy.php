@@ -6,12 +6,12 @@ use App\Models\User;
 
 class UserPolicy
 {
-    public function subscribe(User $user, User $targetUser): bool
+    public function follow(User $user, User $targetUser): bool
     {
         return $user->hasVerifiedEmail() && $user->id !== $targetUser->id;
     }
 
-    public function unsubscribe(User $user, User $targetUser): bool
+    public function unfollow(User $user, User $targetUser): bool
     {
         return $user->hasVerifiedEmail() && $user->id !== $targetUser->id;
     }
