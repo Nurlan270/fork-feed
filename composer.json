@@ -13,7 +13,6 @@
     "require": {
         "php": "^8.2",
         "blade-ui-kit/blade-ui-kit": "^0.7.0",
-        "buzz/laravel-google-captcha": "^2.3",
         "cviebrock/eloquent-sluggable": "^12.0",
         "laravel/framework": "^12.0",
         "laravel/scout": "^10.15",
@@ -21,6 +20,7 @@
         "laravel/tinker": "^2.10.1",
         "livewire/livewire": "^3.6",
         "mcamara/laravel-localization": "^2.3",
+        "mews/captcha": "^3.4",
         "multiavatar/multiavatar-php": "^1.0",
         "php-flasher/flasher-laravel": "^2.1",
         "php-flasher/flasher-notyf-laravel": "^2.1",
