@@ -2,6 +2,8 @@
 
 use App\Models\User;
 use Illuminate\Support\Str;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Mcamara\LaravelLocalization\Exceptions\UnsupportedLocaleException;
 
 if (!function_exists('getUsernameSlug')) {
     function getUsernameSlug(string $username, bool $checkForExistence = false): string
@@ -22,5 +24,17 @@ if (!function_exists('markRoute')) {
         if (Route::is($routeName)) {
             return $classes;
         }
+    }
+}
+
+if (!function_exists('getLocalizedURL')) {
+    /**
+     * @throws UnsupportedLocaleException
+     */
+    function getLocalizedURL(string $routeName, mixed $params = []): false|string
+    {
+        return LaravelLocalization::localizeURL(
+            route($routeName, $params)
+        );
     }
 }
