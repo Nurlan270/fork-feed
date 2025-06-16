@@ -176,24 +176,21 @@ return [
     */
 
     'custom' => [
-        'g-recaptcha-response' => [
-            'required' => 'Please verify that you are not a robot.',
-            'captcha'  => 'Captcha error. Please try again.',
-        ],
-        'images.*'             => [
+        'images.*' => [
             'max' => 'Images size shouldn\'t be greater than 15 MB',
         ],
-        'name'                 => [
+        'name'     => [
             'regex' => 'Only alphabetical characters and space are allowed',
         ],
-        'username'             => [
+        'username' => [
             'regex' => 'Username can\'t contain spaces, or any special characters except: ., -, _',
         ],
-        'email'                => [
+        'email'    => [
             'unique' => 'User with this email already exists',
+            'exists' => 'User with this email does not exists',
         ],
-        'login' => [
-            'regex' => 'Email address / Username can\'t contain spaces.'
+        'login'    => [
+            'regex' => 'Email address / Username can\'t contain spaces.',
         ],
     ],
 

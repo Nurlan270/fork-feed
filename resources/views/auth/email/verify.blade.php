@@ -1,8 +1,10 @@
 @extends('components.layouts.app')
 
-@section('page.title', 'Email Verification')
+@section('page.title', __('auth/email_verify.title'))
 
 @section('content')
+    <x-navbar/>
+
     <main class="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat bg-fixed"
           style="background-image: url('{{ asset('media/auth-bg.jpg') }}')">
         <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
@@ -13,20 +15,20 @@
                           d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"/>
                 </svg>
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">
-                    Email Verification Required
+                    {{ __('auth/email_verify.heading') }}
                 </h2>
                 <p class="max-w-md mx-auto text-lg text-gray-600">
-                    We need to verify your email address before you can continue.
+                    {{ __('auth/email_verify.description') }}
                 </p>
             </div>
 
             <div class="space-y-4">
                 <div class="bg-primary-50 p-4 rounded-lg">
                     <h3 class="text-lg font-semibold text-primary-700 mb-2">
-                        Haven't received the verification link?
+                        {{ __('auth/email_verify.not_received') }}
                     </h3>
                     <p class="text-gray-600">
-                        Please check your spam folder or click below to resend the verification link.
+                        {{ __('auth/email_verify.check_spam') }}
                     </p>
                 </div>
 
@@ -35,12 +37,13 @@
                         text-sm font-medium text-white bg-primary-600
                         hover:bg-primary-700 focus:outline-none focus:ring-2
                         focus:ring-offset-2 focus:ring-primary-500 cursor-pointer transition-colors">
-                    Resend Verification Link
+                    {{ __('auth/email_verify.resend') }}
                 </button>
 
-                <form id="resend-email" class="hidden" action="{{ route('verification.send') }}"
+                <form id="resend-email" class="hidden" action="{{ getLocalizedURL('verification.send') }}"
                       method="POST">@csrf</form>
             </div>
         </div>
     </main>
 @endsection
+

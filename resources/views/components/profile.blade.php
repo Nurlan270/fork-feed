@@ -32,33 +32,33 @@
                 <!-- Profile Information -->
                 <div class="bg-white rounded-lg p-4 shadow-sm">
                     <h3 class="text-base md:text-lg font-semibold text-primary-800">
-                        Profile Information
+                        {{ __('profile.info.title') }}
                     </h3>
                     <div class="grid grid-cols-3 gap-x-2 md:gap-x-4 text-center py-3 border-b-2 border-b-gray-200">
-                        <a href="{{ route('user.tag-profile', compact('user')) }}"
+                        <a href="{{ getLocalizedURL('user.tag-profile', compact('user')) }}"
                            class="rounded py-3 hover:bg-gray-100 transition-colors ">
                                 <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
                                     {{ $user->recipes->count() }}
                                 </span>
-                            <span class="block text-xs md:text-sm text-primary-900">Recipes</span>
+                            <span class="block text-xs md:text-sm text-primary-900">{{ __('profile.info.recipes') }}</span>
                         </a>
-                        <a href="{{ route('user.followers', compact('user')) }}"
+                        <a href="{{ getLocalizedURL('user.followers', compact('user')) }}"
                            class="rounded py-3 hover:bg-gray-100 transition-colors">
                                 <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
                                     {{ $user->followers->count() }}
                                 </span>
-                            <span class="block text-xs md:text-sm text-primary-900">Followers</span>
+                            <span class="block text-xs md:text-sm text-primary-900">{{ __('profile.info.followers') }}</span>
                         </a>
-                        <a href="{{ route('user.following', compact('user')) }}"
+                        <a href="{{ getLocalizedURL('user.following', compact('user')) }}"
                            class="rounded py-3 hover:bg-gray-100 transition-colors">
                                 <span class="block text-xl md:text-2xl font-bold text-[#408D45]">
                                     {{ $user->following->count() }}
                                 </span>
-                            <span class="block text-xs md:text-sm text-primary-900">Following</span>
+                            <span class="block text-xs md:text-sm text-primary-900">{{ __('profile.info.following') }}</span>
                         </a>
                     </div>
                     <div class="flex justify-between mt-5">
-                        <span class="text-primary-900">Joined</span>
+                        <span class="text-primary-900">{{ __('profile.info.joined') }}</span>
                         <span class="font-medium text-[#3A883E]">{{ $user->created_at->format('M, Y') }}</span>
                     </div>
                 </div>

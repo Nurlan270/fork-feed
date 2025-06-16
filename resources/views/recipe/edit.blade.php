@@ -1,6 +1,6 @@
 @extends('components.layouts.app')
 
-@section('page.title', 'Edit Recipe')
+@section('page.title', __('recipe/edit.title'))
 
 @pushonce('styles')
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
@@ -15,19 +15,19 @@
     <main class="flex items-start justify-center my-5">
         <div class="max-w-2xl w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
-                Edit Recipe
+                {{ __('recipe/edit.title') }}
             </h2>
 
-            <form method="POST" action="{{ route('recipe.update', $recipe) }}" class="space-y-6" id="update-form"
+            <form method="POST" action="{{ getLocalizedURL('recipe.update', $recipe) }}" class="space-y-6" id="update-form"
                   enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
                 <div class="space-y-2">
                     <label for="title" class="text-sm font-medium text-gray-700">
-                        Title
+                        {{ __('recipe/edit.form.title') }}
                     </label>
-                    <input type="text" id="title" name="title" placeholder="Cheesecake"
+                    <input type="text" id="title" name="title" placeholder="{{ __('recipe/edit.form.title_placeholder') }}"
                            value="{{ old('title', $recipe->title) }}"
                            class="block w-full p-2 border rounded-md shadow-sm
                        focus:ring-primary-500 focus:border-primary-500"
@@ -39,13 +39,13 @@
 
                 <div class="space-y-2">
                     <label for="description" class="text-sm font-medium text-gray-700">
-                        Description
+                        {{ __('recipe/edit.form.description') }}
                     </label>
                     <x-markdown-editor
                         name="description"
                         :options="[
                             'minHeight' => '200px',
-                            'placeholder' => 'Cook something awesome!',
+                            'placeholder' => __('recipe/edit.form.description_placeholder'),
                         ]">
                         {{ old('description', $recipe->description) }}
                     </x-markdown-editor>
@@ -56,7 +56,7 @@
 
                 <div class="space-y-2">
                     <label class="block text-sm font-medium text-gray-700">
-                        Ingredients (After typing press "," or "Enter")
+                        {{ __('recipe/edit.form.ingredients_label') }}
                     </label>
                     <input type="text" id="ingredients" name="ingredients" class="w-full rounded-md"
                            value="{{ old('ingredients', $recipe->ingredients->pluck('name')->implode(',')) }}">
@@ -67,7 +67,7 @@
 
                 <div class="space-y-5">
                     <label class="text-sm font-medium text-gray-700">
-                        Images
+                        {{ __('recipe/edit.form.images_label') }}
                     </label>
 
                     <div class="swiper relative max-w-xl mx-auto rounded overflow-hidden">
@@ -80,12 +80,12 @@
 
                                     <!-- Image -->
                                     <img src="{{ $image->path }}"
-                                         alt="Recipe image"
+                                         alt="{{ __('recipe/edit.form.image_alt') }}"
                                          class="max-h-64 w-auto object-contain mx-auto rounded image-display transition duration-300"/>
 
                                     <div
                                         class="deleted-overlay absolute inset-0 bg-gray-500/50 backdrop-blur-sm text-white flex items-center justify-center text-lg font-semibold rounded hidden pointer-events-none z-10">
-                                        Deleted
+                                        {{ __('recipe/edit.form.image_deleted') }}
                                     </div>
 
                                     <!-- Button -->
@@ -121,7 +121,7 @@
 
                     <label
                         class="block w-full cursor-pointer p-4 border border-dashed rounded-md text-center hover:bg-gray-50">
-                        <span id="fileLabelText" class="text-gray-600">Click to upload images (Max. 15MB)</span>
+                        <span id="fileLabelText" class="text-gray-600">{{ __('recipe/edit.form.upload_label') }}</span>
                         <input type="file" name="images[]" id="images" class="hidden" accept="image/*" multiple>
                     </label>
                     @error('images')
@@ -137,7 +137,7 @@
                     text-sm font-medium text-white bg-primary-600
                     hover:bg-primary-700 focus:outline-none focus:ring-2
                     focus:ring-offset-2 focus:ring-primary-500 cursor-pointer transition-colors">
-                    Update Recipe
+                    {{ __('recipe/edit.form.update_button') }}
                 </button>
             </form>
         </div>
@@ -157,7 +157,9 @@
             document.querySelector('#images').addEventListener('change', function () {
                 const count = this.files.length;
                 const label = document.querySelector('#fileLabelText');
-                label.textContent = count > 0 ? `${count} image(s) selected` : 'Click to upload images (Max. 15MB)';
+                label.textContent = count > 0
+                    ? `${count} {{ __('recipe/edit.form.images_selected') }}`
+                    : '{{ __('recipe/edit.form.upload_label') }}';
             });
 
             const deletedImages = {};

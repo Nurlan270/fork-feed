@@ -1,6 +1,6 @@
 @extends('components.layouts.app')
 
-@section('page.title', 'Sign In')
+@section('page.title', __('auth/login.title'))
 
 @section('content')
     <x-navbar/>
@@ -8,37 +8,18 @@
     <main class="min-h-8 flex items-center justify-center py-5">
         <div class="max-w-md w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
-                Sign in
+                {{ __('auth/login.heading') }}
             </h2>
 
-            <form method="POST" action="{{ route('auth.login.store') }}" class="space-y-4">
+            <form method="POST" action="{{ getLocalizedURL('auth.login.store') }}" class="space-y-4">
                 @csrf
 
                 <div class="space-y-2">
-                    <label for="login" class="text-sm font-medium text-gray-700">
-                        Email address / Username
-                    </label>
-                    <input id="login" name="login" type="text"
-                           value="{{ old('login') }}"
-                           class="block w-full p-2 border rounded-md shadow-sm
-                       focus:ring-primary-500 focus:border-primary-500"
-                           required autocomplete="email" autofocus>
-                    @error('login')
-                    <span class="text-sm text-red-500">{{ $message }}</span>
-                    @enderror
+                    <x-input :label="__('auth/login.form.login_label')" name="login" placeholder="john@gmail.com"/>
                 </div>
 
                 <div class="space-y-2">
-                    <label for="password" class="text-sm font-medium text-gray-700">
-                        Password
-                    </label>
-                    <input id="password" name="password" type="password"
-                           class="block w-full p-2 border rounded-md shadow-sm
-                       focus:ring-primary-500 focus:border-primary-500"
-                           required autocomplete="current-password">
-                    @error('password')
-                    <span class="text-sm text-red-500">{{ $message }}</span>
-                    @enderror
+                    <x-input :label=" __('auth/login.form.password')" name="password" type="password" :render-old-value="false"/>
                 </div>
 
                 <div class="flex items-center justify-between">
@@ -46,12 +27,12 @@
                         <input id="remember" name="remember" type="checkbox"
                                class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded cursor-pointer">
                         <label for="remember" class="ml-2 block text-sm text-gray-900 cursor-pointer">
-                            Remember me
+                            {{ __('auth/login.form.remember') }}
                         </label>
                     </div>
-                    <a href="{{ route('password.request') }}"
+                    <a href="{{ getLocalizedURL('password.request') }}"
                        class="text-sm text-primary-600 hover:text-primary-500">
-                        Forgot your password?
+                        {{ __('auth/login.form.forgot') }}
                     </a>
                 </div>
 
@@ -61,12 +42,12 @@
                         rounded-md shadow-sm text-sm font-medium text-white bg-primary-600
                         hover:bg-primary-700 focus:outline-none focus:ring-2
                         focus:ring-offset-2 focus:ring-primary-500 cursor-pointer transition-colors">
-                        Sign in
+                        {{ __('auth/login.form.submit') }}
                     </button>
 
-                    <span class="text-sm text-gray-500">Doesn't have an account? <a
+                    <span class="text-sm text-gray-500">{{ __('auth/login.form.no_account') }} <a
                             class="text-primary-600 hover:underline"
-                            href="{{ route('auth.register') }}">Sign Up</a></span>
+                            href="{{ getLocalizedURL('auth.register') }}">{{ __('auth/login.form.sign_up') }}</a></span>
 
                     <div class="relative mt-4">
                         <div class="absolute inset-0 flex items-center">
@@ -74,27 +55,27 @@
                         </div>
                         <div class="relative flex justify-center text-sm">
                         <span class="px-2 bg-white text-gray-500">
-                            Or continue with
+                            {{ __('auth/login.form.or_continue_with') }}
                         </span>
                         </div>
                     </div>
 
                     <div class="flex gap-4">
-                        <a href="{{ route('auth.google') }}"
+                        <a href="{{ getLocalizedURL('auth.google') }}"
                            class="flex-1 flex items-center justify-center gap-2 py-2 px-4 border border-gray-300
                    rounded-md shadow-sm text-sm font-medium text-gray-700
                    hover:bg-gray-50 focus:outline-none focus:ring-2
                    focus:ring-offset-2 focus:ring-primary-500">
                             <img src="{{ asset('media/google-icon.svg') }}" class="size-5" alt="Google logo">
-                            Google
+                            {{ __('auth/login.form.google') }}
                         </a>
-                        <a href="{{ route('auth.github') }}"
+                        <a href="{{ getLocalizedURL('auth.github') }}"
                            class="flex-1 flex items-center justify-center gap-2 py-2 px-4 border border-gray-300
                    rounded-md shadow-sm text-sm font-medium text-gray-700
                    hover:bg-gray-50 focus:outline-none focus:ring-2
                    focus:ring-offset-2 focus:ring-primary-500">
                             <img src="{{ asset('media/github-icon.svg') }}" class="size-5" alt="GitHub logo">
-                            GitHub
+                            {{ __('auth/login.form.github') }}
                         </a>
                     </div>
                 </div>
@@ -102,3 +83,4 @@
         </div>
     </main>
 @endsection
+

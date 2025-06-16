@@ -37,7 +37,7 @@ class Ingredient extends Model
     protected function name(): Attribute
     {
         return Attribute::set(
-            fn($value) => ucfirst(($value),
-        ));
+            fn($value) => mb_ucfirst($value)
+        );
     }
 }

@@ -1,6 +1,6 @@
 <div class="max-w-7xl mx-auto px-4 py-8">
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <h2 class="text-3xl font-semibold">Explore Recipes</h2>
+        <h2 class="text-3xl font-semibold">{{ __('explore.title') }}</h2>
 
         <div class="flex w-full max-w-lg">
             <!-- Search Input with loading spinner -->
@@ -8,7 +8,7 @@
                 <input
                     wire:model.live="search"
                     type="text"
-                    placeholder="Search recipes..."
+                    placeholder="{{ __('explore.search_placeholder') }}"
                     class="w-full pr-10 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-primary-500 transition-all"
                 />
 
@@ -35,11 +35,11 @@
                 wire:model.live="sort"
                 class="pe-8 py-2 border-t border-b border-r border-gray-300 rounded-r-md focus:outline-none focus:ring-1 focus:ring-primary-500 transition-all"
             >
-                <option selected disabled>Sort By</option>
-                <option value="popular">Popular</option>
-                <option value="liked">Most Liked</option>
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
+                <option selected disabled>{{ __('explore.sort_by.label') }}</option>
+                <option value="popular">{{ __('explore.sort_by.popular') }}</option>
+                <option value="liked">{{ __('explore.sort_by.liked') }}</option>
+                <option value="newest">{{ __('explore.sort_by.newest') }}</option>
+                <option value="oldest">{{ __('explore.sort_by.oldest') }}</option>
             </select>
         </div>
     </div>
@@ -58,6 +58,6 @@
         </div>
         {{ $recipes->links() }}
     @else
-        <p class="text-base text-center mt-10 break-words">Nothing found</p>
+        <p class="text-base text-center mt-10 break-words">{{ __('explore.nothing_found') }}</p>
     @endif
 </div>

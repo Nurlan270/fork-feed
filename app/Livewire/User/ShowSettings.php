@@ -3,10 +3,8 @@
 namespace App\Livewire\User;
 
 use App\Livewire\Forms\SettingsForm;
-use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Livewire\Attributes\Locked;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 

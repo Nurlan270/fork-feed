@@ -1,6 +1,6 @@
 @extends('components.layouts.app')
 
-@section('page.title', 'Create Recipe')
+@section('page.title', __('recipe/create.title'))
 
 @pushonce('styles')
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
@@ -15,17 +15,17 @@
     <main class="flex items-start justify-center my-5">
         <div class="max-w-2xl w-full bg-white/90 rounded-lg shadow-md p-6 backdrop-blur-sm">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
-                Create New Recipe
+                {{ __('recipe/create.title') }}
             </h2>
 
-            <form method="POST" action="{{ route('recipe.store') }}" class="space-y-6" enctype="multipart/form-data">
+            <form method="POST" action="{{ getLocalizedURL('recipe.store') }}" class="space-y-6" enctype="multipart/form-data">
                 @csrf
 
                 <div class="space-y-2">
                     <label for="title" class="text-sm font-medium text-gray-700">
-                        Title
+                        {{ __('recipe/create.form.title') }}
                     </label>
-                    <input type="text" id="title" name="title" placeholder="Cheesecake"
+                    <input type="text" id="title" name="title" placeholder="{{ __('recipe/create.form.title_placeholder') }}"
                            value="{{ old('title') }}"
                            class="block w-full p-2 border rounded-md shadow-sm
                        focus:ring-primary-500 focus:border-primary-500"
@@ -37,11 +37,11 @@
 
                 <div class="space-y-2">
                     <label for="description" class="text-sm font-medium text-gray-700">
-                        Description
+                        {{ __('recipe/create.form.description') }}
                     </label>
                     <x-markdown-editor name="description" :options="[
                         'minHeight' => '200px',
-                        'placeholder' => 'Cook something awesome!',
+                        'placeholder' => __('recipe/create.form.description_placeholder'),
                     ]"/>
                     @error('description')
                     <span class="text-sm text-red-500">{{ $message }}</span>
@@ -50,7 +50,7 @@
 
                 <div class="space-y-2">
                     <label class="block text-sm font-medium text-gray-700">
-                        Ingredients (After typing press "," or "Enter")
+                        {{ __('recipe/create.form.ingredients_label') }}
                     </label>
                     <input type="text" id="ingredients" name="ingredients" class="w-full rounded-md"
                            value="{{ old('ingredients') }}">
@@ -61,11 +61,11 @@
 
                 <div class="space-y-2">
                     <label class="text-sm font-medium text-gray-700">
-                        Images
+                        {{ __('recipe/create.form.images_label') }}
                     </label>
                     <label
                         class="block w-full cursor-pointer p-4 border border-dashed rounded-md text-center hover:bg-gray-50">
-                        <span id="fileLabelText" class="text-gray-600">Click to upload images (Max. 15MB)</span>
+                        <span id="fileLabelText" class="text-gray-600">{{ __('recipe/create.form.upload_label') }}</span>
                         <input type="file" name="images[]" id="images" class="hidden" accept="image/*" multiple>
                     </label>
                     @error('images')
@@ -81,7 +81,7 @@
                     text-sm font-medium text-white bg-primary-600
                     hover:bg-primary-700 focus:outline-none focus:ring-2
                     focus:ring-offset-2 focus:ring-primary-500 cursor-pointer transition-colors">
-                    Upload Recipe
+                    {{ __('recipe/create.form.upload_button') }}
                 </button>
             </form>
         </div>
@@ -100,7 +100,9 @@
         document.querySelector('#images').addEventListener('change', function () {
             const count = this.files.length;
             const label = document.querySelector('#fileLabelText');
-            label.textContent = count > 0 ? `${count} image(s) selected` : 'Click to upload images (Max. 15MB)';
+            label.textContent = count > 0
+                ? `${count} {{ __('recipe/create.form.images_selected') }}`
+                : '{{ __('recipe/create.form.upload_label') }}';
         });
     </script>
     @bukScripts

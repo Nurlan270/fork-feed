@@ -1,6 +1,6 @@
 @extends('components.layouts.app')
 
-@section('page.title', 'Recipes with ' .  $ingredient->name)
+@section('page.title', __('recipe/by_ingredient.title', ['ingredient' => $ingredient->name]))
 
 @section('content')
     <x-navbar/>

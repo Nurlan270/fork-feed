@@ -15,6 +15,10 @@ return [
     ],
     'logout'              => 'Logged out',
     'invalid_credentials' => 'Invalid credentials',
+    'password_reset_link' => [
+        'success' => 'Password reset link sent to your email address. Please check your inbox',
+        'error'   => 'Failed to send password reset link. Please try again',
+    ],
 
     //  Recipe
     'recipe'              => [
@@ -24,7 +28,7 @@ return [
     ],
 
     //  Exceptions
-    'exceptions' => [
+    'exceptions'          => [
         'removal_of_all_recipe_images'        => "Can't remove all recipe images",
         'recipe_images_upload_limit_exceeded' => "Recipe can't have more than 20 images",
     ],

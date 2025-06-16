@@ -9,25 +9,25 @@
         <div class="absolute inset-0 bg-black/60"></div>
 
         <!-- Content -->
-        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8">
+        <div class="relative text-center px-4 sm:px-6 lg:px-8">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Share Your Passion For Food
+                {{ __('welcome.hero.main') }}
             </h1>
 
             <p class="max-w-md mx-auto text-xl text-gray-200 mb-8">
-                Discover, share, and enjoy recipes with food enthusiasts worldwide
+                {{ __('welcome.hero.sub') }}
             </p>
 
             <div class="flex justify-center gap-4">
                 @guest
-                    <a href="{{ route('auth.register') }}"
+                    <a href="{{ getLocalizedURL('auth.register') }}"
                        class="inline-flex items-center justify-center px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-700 transition-colors">
-                        Get Started
+                        {{ __('welcome.get_started') }}
                     </a>
                 @endguest
-                <a href="{{ route('explore') }}"
+                <a href="{{ getLocalizedURL('explore') }}"
                    class="inline-flex items-center justify-center px-6 py-3 bg-white text-primary-500 rounded-lg hover:bg-gray-100 transition-colors">
-                    Explore Recipes
+                    {{ __('welcome.explore') }}
                 </a>
             </div>
         </div>
@@ -36,9 +36,11 @@
     <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">How ForkFeed Works</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+                    {{ __('welcome.steps.title') }}
+                </h2>
                 <p class="mt-4 max-w-md mx-auto text-lg text-gray-600">
-                    Join our community of food enthusiasts and start sharing your favorite recipes today!
+                    {{ __('welcome.steps.subtitle') }}
                 </p>
             </div>
 
@@ -50,8 +52,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round"
                               d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"/>
                     </svg>
-                    <h3 class="text-xl font-semibold text-gray-900">Share Your Recipes</h3>
-                    <p class="mt-2 text-gray-600">Upload photos and share your cooking creations with the community.</p>
+                    <h3 class="text-xl font-semibold text-gray-900">{{ __('welcome.steps.share.title') }}</h3>
+                    <p class="mt-2 text-gray-600">{{ __('welcome.steps.share.desc') }}</p>
                 </div>
 
                 <!-- Card 2 -->
@@ -61,8 +63,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round"
                               d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
                     </svg>
-                    <h3 class="text-xl font-semibold text-gray-900">Discover Recipes</h3>
-                    <p class="mt-2 text-gray-600">Browse thousands of recipes shared by food enthusiasts.</p>
+                    <h3 class="text-xl font-semibold text-gray-900">{{ __('welcome.steps.discover.title') }}</h3>
+                    <p class="mt-2 text-gray-600">{{ __('welcome.steps.discover.desc') }}</p>
                 </div>
 
                 <!-- Card 3 -->
@@ -72,8 +74,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round"
                               d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/>
                     </svg>
-                    <h3 class="text-xl font-semibold text-gray-900">Join Communities</h3>
-                    <p class="mt-2 text-gray-600">Connect with fellow food lovers and join recipe discussions.</p>
+                    <h3 class="text-xl font-semibold text-gray-900">{{ __('welcome.steps.join.title') }}</h3>
+                    <p class="mt-2 text-gray-600">{{ __('welcome.steps.join.desc') }}</p>
                 </div>
             </div>
         </div>
@@ -82,9 +84,9 @@
     <section class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Today's Featured Recipes</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">{{ __('welcome.featured.title') }}</h2>
                 <p class="mt-2 max-w-md mx-auto text-lg text-gray-600">
-                    Handpicked recipes from our passionate community members
+                    {{ __('welcome.featured.subtitle') }}
                 </p>
             </div>
 
@@ -95,16 +97,16 @@
 
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                                Summer Vegetable Pasta
+                                {{ __('welcome.featured.recipe_title') }}
                             </h3>
 
                             <div class="flex items-center justify-between text-sm text-gray-600">
-                                <span>By Sarah Johnson</span>
-                                <span>15 mins</span>
+                                <span>{{ __('welcome.featured.by') }}</span>
+                                <span>{{ __('welcome.featured.time') }}</span>
                             </div>
 
                             <p class="mt-4 text-gray-600 line-clamp-2">
-                                Fresh vegetables tossed in homemade pesto sauce, served with whole wheat pasta...
+                                {{ __('welcome.featured.description') }}
                             </p>
 
                             <div class="mt-6 flex justify-between items-center">
@@ -119,7 +121,7 @@
 
                                 <a href="#"
                                    class="inline-flex items-center px-4 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-700 transition-colors">
-                                    View Recipe
+                                    {{ __('welcome.view_recipe') }}
                                 </a>
                             </div>
                         </div>
@@ -128,9 +130,9 @@
             </div>
 
             <div class="mt-8 text-center">
-                <a href="{{ route('explore') }}"
+                <a href="{{ getLocalizedURL('explore') }}"
                    class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors">
-                    Browse More Recipes
+                    {{ __('welcome.browse_more') }}
                 </a>
             </div>
         </div>
@@ -139,9 +141,9 @@
     <section class="py-12 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Community Loves ForkFeed</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">{{ __('welcome.testimonials.title') }}</h2>
                 <p class="mt-2 max-w-md mx-auto text-lg text-gray-600">
-                    Real stories from passionate food enthusiasts who found their cooking community
+                    {{ __('welcome.testimonials.subtitle') }}
                 </p>
             </div>
 
@@ -150,12 +152,11 @@
                     <div class="bg-white rounded-lg shadow-sm p-6">
                         <blockquote class="mb-6">
                             <p class="text-xl text-gray-700 italic mb-4">
-                                Fork Feed - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur
-                                error fugit harum laboriosam nobis quidem recusandae sed. Animi, vitae!
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur error fugit...
                             </p>
 
                             <footer class="flex items-center justify-start space-x-4">
-                                <img src="{{ asset('media/recipe-create.jpg') }}"
+                                <img src="{{ asset('media/logo-mini.png') }}"
                                      alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white">
                                 <div class="space-y-1">
                                     <h3 class="font-semibold text-gray-900">{{ fake()->name() }}</h3>
@@ -168,6 +169,4 @@
             </div>
         </div>
     </section>
-
-    <x-footer/>
 @endsection

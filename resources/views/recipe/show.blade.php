@@ -48,7 +48,7 @@
 
                     <!-- Description -->
                     <div class="p-4">
-                        <h3 class="text-base md:text-md font-semibold text-primary-800 mb-6">Description</h3>
+                        <h3 class="text-base md:text-md font-semibold text-primary-800 mb-6">{{ __('recipe/show.description') }}</h3>
                         <div class="prose max-w-fit">
                             {!! Str::markdown($recipe->description) !!}
                         </div>
@@ -62,7 +62,7 @@
 
                         <!-- Author Info -->
                         <div class="rounded-lg p-4 shadow-sm">
-                            <a href="{{ route('user.tag-profile', $recipe->author) }}" title="Go to Profile"
+                            <a href="{{ getLocalizedURL('user.tag-profile', $recipe->author) }}" title="{{ __('recipe/show.go_to_profile') }}"
                                class="flex items-center space-x-4 border-b-2 border-b-gray-100 pb-5">
                                 <!-- Avatar -->
                                 <img src="{{ $recipe->author->avatar }}" alt="{{ $recipe->author->name }}"
@@ -79,13 +79,13 @@
 
                             <div class="pt-5 space-y-2 text-sm">
                                 <div class="flex justify-between">
-                                    <span class="text-primary-900">Views</span>
+                                    <span class="text-primary-900">{{ __('recipe/show.views') }}</span>
                                     <span class="font-medium text-[#3A883E]">{{ $recipe->views }}</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-primary-900">Uploaded</span>
+                                    <span class="text-primary-900">{{ __('recipe/show.uploaded') }}</span>
                                     <span
-                                        class="font-medium text-[#3A883E]">{{ $recipe->created_at->format('d M, Y') }}</span>
+                                        class="font-medium text-[#3A883E]">{{ $recipe->created_at->translatedFormat('d M, Y') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -93,11 +93,11 @@
                         <!-- Ingredients -->
                         <div class="rounded-lg p-3 md:p-4 shadow-sm">
                             <h3 class="text-base md:text-lg font-semibold text-primary-800 mb-4">
-                                Ingredients
+                                {{ __('recipe/show.ingredients.title') }}
                             </h3>
                             <div class="grid grid-cols-2 gap-2">
                                 @foreach($recipe->ingredients as $ingredient)
-                                    <a href="{{ route('recipe.by-ingredient', compact('ingredient')) }}"
+                                    <a href="{{ getLocalizedURL('recipe.by-ingredient', compact('ingredient')) }}"
                                        class="px-2 py-1 text-sm text-center bg-[#408D45]/10 text-[#408D45] rounded-md hover:bg-[#408D45]/20 transition-colors cursor-pointer">
                                         {{ $ingredient->name }}
                                     </a>

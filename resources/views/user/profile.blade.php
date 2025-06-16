@@ -1,8 +1,8 @@
 @extends('components.layouts.app')
 
 @php
-    if (Route::is('user.profile')) $title = 'Profile';
-    else $title = $user->name . "'s Profile";
+    if (Route::is('user.profile')) $title = __('profile.title');
+    else $title = __('profile.title_with_name', ['name' => $user->name]);
 @endphp
 
 @section('page.title', $title)
@@ -12,3 +12,4 @@
 
     <livewire:user.show-recipes :user="$user ?? null"/>
 @endsection
+

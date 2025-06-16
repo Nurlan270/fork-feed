@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Exception;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -14,28 +15,30 @@ class PasswordResetController extends Controller
     public function email(Request $request)
     {
         $request->validate([
-            'email' => ['required', 'string', 'email'],
-            'g-recaptcha-response' => ['required', 'captcha'],
+            'email'   => ['required', 'string', 'email', 'exists:users,email'],
+            'captcha' => ['required', 'captcha'],
         ]);
 
-        if (User::where('email', $request->email)->exists()) {
+        try {
             Password::sendResetLink(
                 $request->only('email')
             );
+
+            notyf()->success(__('flasher.password_reset_link.success'));
+
+            return redirect()->route('welcome');
+        } catch (Exception $e) {
+            notyf()->error(__('flasher.password_reset_link.error'));
         }
 
-        notyf()
-            ->duration(7000)
-            ->info('Password reset link has been sent — if the email you entered is associated with an account');
-
-        return redirect()->route('welcome');
+        return back();
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'token' => 'required',
-            'email' => ['required', 'email'],
+            'token'    => ['required'],
+            'email'    => ['required', 'email'],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
@@ -43,7 +46,7 @@ class PasswordResetController extends Controller
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function (User $user, string $password) {
                 $user->forceFill([
-                    'password' => bcrypt($password)
+                    'password' => bcrypt($password),
                 ])->setRememberToken(Str::random(60));
 
                 $user->save();

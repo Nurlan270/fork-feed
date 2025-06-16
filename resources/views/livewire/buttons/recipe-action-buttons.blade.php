@@ -1,7 +1,7 @@
 <div class="flex flex-nowrap md:justify-end justify-between sm:justify-end items-center md:gap-x-2 sm:gap-x-2">
     @canany(['like', 'dislike', 'bookmark'], $recipe)
         <!-- Like Button -->
-        <button title="Like" wire:click="{{ $liked ? 'resetReaction' : 'like' }}" type="button"
+        <button title="{{ __('livewire_components.like') }}" wire:click="{{ $liked ? 'resetReaction' : 'like' }}" type="button"
                 class="flex items-center md:gap-x-3 gap-x-2 px-3 py-2 rounded-md text-primary-700 hover:bg-gray-100 transition cursor-pointer text-sm sm:text-base">
             <span class="text-sm">{{ $recipe->likes->count() }}</span>
             @if ($liked)
@@ -19,7 +19,7 @@
         </button>
 
         <!-- Dislike Button -->
-        <button title="Dislike" wire:click="{{ $disliked ? 'resetReaction' : 'dislike' }}" type="button"
+        <button title="{{ __('livewire_components.dislike') }}" wire:click="{{ $disliked ? 'resetReaction' : 'dislike' }}" type="button"
                 class="flex items-center px-3 py-2 rounded-md text-primary-700 hover:bg-gray-100 transition cursor-pointer text-sm sm:text-base">
             @if ($disliked)
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
@@ -36,7 +36,7 @@
         </button>
 
         <!-- Bookmark Button -->
-        <button title="Add to Bookmarks" type="button" wire:click="{{ $bookmarked ? 'removeBookmark' : 'bookmark' }}"
+        <button title="{{ __('livewire_components.bookmark') }}" type="button" wire:click="{{ $bookmarked ? 'removeBookmark' : 'bookmark' }}"
                 class="flex items-center px-3 py-2 rounded-md text-primary-700 hover:bg-gray-100 transition cursor-pointer text-sm sm:text-base">
             @if($bookmarked)
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">

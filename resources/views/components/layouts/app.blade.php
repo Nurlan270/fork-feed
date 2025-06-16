@@ -8,7 +8,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <title>
-        @yield('page.title') | {{ config('app.name') }}
+        @if(Route::is('welcome'))
+            {{ __('welcome.title') }}
+        @else
+            @yield('page.title') | {{ config('app.name') }}
+        @endif
     </title>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
