@@ -12,11 +12,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -67,6 +68,14 @@ class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
     public function getRouteKeyName(): string
     {
         return 'username';
+    }
+
+    public function toSearchableArray(): array
+    {
+        return array_merge($this->toArray(), [
+            'id'         => (string)$this->id,
+            'created_at' => $this->created_at->timestamp,
+        ]);
     }
 
     public function recipes(): HasMany
