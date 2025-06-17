@@ -10,4 +10,9 @@ return [
     'bookmarks'     => 'Закладки',
     'settings'      => 'Настройки',
     'logout'        => 'Выйти',
+    'spotlight'     => [
+        'button_placeholder' => 'Поиск',
+        'placeholder'        => 'Ищите Рецепты или Пользователей',
+        'no_results'         => 'Упс! Ничего не найдено.',
+    ],
 ];

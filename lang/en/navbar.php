@@ -10,4 +10,9 @@ return [
     'bookmarks'     => 'Bookmarks',
     'settings'      => 'Settings',
     'logout'        => 'Logout',
+    'spotlight'     => [
+        'button_placeholder' => 'Search',
+        'placeholder'        => 'Search for Recipes or Users',
+        'no_results'         => 'Ops! Nothing found.',
+    ],
 ];
