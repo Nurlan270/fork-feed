@@ -67,3 +67,11 @@ body {
 #navbar.navbar-visible {
     transform: translateY(0);
 }
+
+/** daisyUI */
+@plugin "daisyui" {
+    themes: light --default;
+}
+
+/* maryUI */
+@source "../../vendor/robsontenorio/mary/src/View/Components/**/*.php";
