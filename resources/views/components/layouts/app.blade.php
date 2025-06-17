@@ -19,9 +19,13 @@
     @livewireStyles
     @stack('styles')
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50" x-data>
     @yield('content')
 
+    <x-spotlight
+        shortcut="meta.k"
+        :search-text="__('navbar.spotlight.placeholder')"
+        :no-results-text="__('navbar.spotlight.no_results')"/>
     @livewireScripts
     @stack('scripts')
 </body>

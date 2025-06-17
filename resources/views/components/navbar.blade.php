@@ -16,6 +16,40 @@
 
         @auth
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                @auth
+                    <!-- Search Bar Container -->
+                    <div
+                        class="flex items-center bg-white/80 border border-gray-200 rounded-full px-2 cursor-pointer me-3 group hover:border-primary-500 transition-colors"
+                        @click.stop="$dispatch('mary-search-open')">
+                        <!-- Search Icon -->
+                        <svg class="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-600 transition-colors" fill="none"
+                             stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+
+                        <span
+                            class="flex-1 text-gray-400 text-sm py-2 mx-2 group-hover:text-gray-600 cursor-pointer transition-colors">
+                        {{ __('navbar.spotlight.button_placeholder') }}
+                    </span>
+
+                        <!-- Shortcut Buttons Container - Hidden on small screens -->
+                        <div class="hidden sm:flex items-center space-x-1">
+                            <!-- First Shortcut Button -->
+                            <div
+                                class="w-5 h-5 bg-gray-100 border border-gray-200 text-gray-500 rounded flex items-center justify-center">
+                                ⌘
+                            </div>
+
+                            <!-- Second Shortcut Button -->
+                            <div
+                                class="w-5 h-5 bg-gray-100 border border-gray-200 text-gray-500 rounded flex items-center justify-center">
+                                K
+                            </div>
+                        </div>
+                    </div>
+                @endauth
+
                 <button type="button"
                         class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
