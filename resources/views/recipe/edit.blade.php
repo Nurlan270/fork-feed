@@ -41,7 +41,7 @@
                     <label for="description" class="text-sm font-medium text-gray-700">
                         {{ __('recipe/edit.form.description') }}
                     </label>
-                    <x-markdown-editor
+                    <x-markdown-editor wire:ignore
                         name="description"
                         :options="[
                             'minHeight' => '200px',
