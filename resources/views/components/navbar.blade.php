@@ -16,56 +16,82 @@
 
         @auth
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                @auth
-                    <!-- Search Bar Container -->
-                    <div
-                        class="flex items-center bg-white/80 border border-gray-200 rounded-full px-2 cursor-pointer me-3 group hover:border-primary-500 transition-colors"
-                        @click.stop="$dispatch('mary-search-open')">
-                        <!-- Search Icon -->
-                        <svg class="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-600 transition-colors" fill="none"
-                             stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
+                <!-- Search Bar Container -->
+                <div
+                    class="flex items-center bg-white/80 border border-gray-200 rounded-full px-2 cursor-pointer me-3 group hover:border-primary-500 transition-colors"
+                    @click.stop="$dispatch('mary-search-open')">
+                    <!-- Search Icon -->
+                    <svg class="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-600 transition-colors" fill="none"
+                         stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
 
-                        <span
-                            class="flex-1 text-gray-400 text-sm py-2 mx-2 group-hover:text-gray-600 cursor-pointer transition-colors">
+                    <span
+                        class="flex-1 text-gray-400 text-sm py-2 mx-2 group-hover:text-gray-600 cursor-pointer transition-colors">
                         {{ __('navbar.spotlight.button_placeholder') }}
                     </span>
 
-                        <!-- Shortcut Buttons Container - Hidden on small screens -->
-                        <div class="hidden sm:flex items-center space-x-1">
-                            <!-- First Shortcut Button -->
-                            <div
-                                class="w-5 h-5 bg-gray-100 border border-gray-200 text-gray-500 rounded flex items-center justify-center">
-                                ⌘
-                            </div>
+                    <!-- Shortcut Buttons Container - Hidden on small screens -->
+                    <div class="hidden sm:flex items-center space-x-1">
+                        <!-- First Shortcut Button -->
+                        <div
+                            class="w-5 h-5 bg-gray-100 border border-gray-200 text-gray-500 rounded flex items-center justify-center">
+                            ⌘
+                        </div>
 
-                            <!-- Second Shortcut Button -->
-                            <div
-                                class="w-5 h-5 bg-gray-100 border border-gray-200 text-gray-500 rounded flex items-center justify-center">
-                                K
-                            </div>
+                        <!-- Second Shortcut Button -->
+                        <div
+                            class="w-5 h-5 bg-gray-100 border border-gray-200 text-gray-500 rounded flex items-center justify-center">
+                            K
                         </div>
                     </div>
-                @endauth
+                </div>
 
                 <button type="button"
-                        class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
+                        class="flex relative text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                         data-dropdown-placement="bottom">
                     <span class="sr-only">Open user menu</span>
                     <img class="w-8 h-8 rounded-full cursor-pointer" src="{{ auth()->user()->avatar }}" alt="Avatar">
+                    @if(!auth()->user()->hasVerifiedEmail())
+                        <span class="size-3 bg-yellow-300 rounded-full absolute -top-0.5 -right-0.5"></span>
+                    @endif
                 </button>
                 <!-- Dropdown menu -->
                 <div
-                    class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm"
+                    class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm max-w-64"
                     id="user-dropdown">
                     <div class="px-4 py-3">
                         <span class="block text-sm text-gray-900">{{ auth()->user()->name }}</span>
                         <span
                             class="block text-sm text-gray-500 truncate">{{ '@'.auth()->user()->username }}</span>
                     </div>
+
+                    @if(!auth()->user()->hasVerifiedEmail())
+                        <div class="px-4 py-3 bg-yellow-50 border-b border-yellow-100">
+                            <div class="flex items-start gap-x-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="currentColor"
+                                     class="size-5 text-yellow-600 mt-0.5 flex-shrink-0">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
+                                </svg>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-yellow-800">{{ __('navbar.verify_email.title') }}</p>
+                                    <p class="text-xs text-yellow-700 mt-1">{{ __('navbar.verify_email.message') }}</p>
+                                    <form action="{{ route('verification.send') }}" method="POST" class="mt-2">
+                                        @csrf
+                                        <button type="submit"
+                                                class="text-xs font-medium text-yellow-800 hover:text-yellow-900 underline hover:no-underline cursor-pointer">
+                                            {{ __('navbar.verify_email.button') }}
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     <ul class="py-2" aria-labelledby="user-menu-button">
                         <li>
                             <a href="{{ getLocalizedURL('recipe.create') }}"
