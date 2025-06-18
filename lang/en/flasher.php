@@ -33,8 +33,19 @@ return [
         'recipe_images_upload_limit_exceeded' => "Recipe can't have more than 20 images",
     ],
 
+    'info'     => [
+        'recipe' => [
+            'cannot_action' => 'You must verify your email to :action this recipe',
+            'action'        => [
+                'like'     => 'like',
+                'dislike'  => 'dislike',
+                'bookmark' => 'bookmark',
+            ],
+        ],
+    ],
+
     //  Settings
-    'settings'            => [
+    'settings' => [
         'updated' => 'Settings updated',
     ],
 ];
