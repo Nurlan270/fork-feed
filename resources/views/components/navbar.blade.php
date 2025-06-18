@@ -83,7 +83,7 @@
                                     <form action="{{ route('verification.send') }}" method="POST" class="mt-2">
                                         @csrf
                                         <button type="submit"
-                                                class="text-xs font-medium text-yellow-800 hover:text-yellow-900 underline hover:no-underline cursor-pointer">
+                                                class="text-xs font-medium text-yellow-800 hover:text-yellow-900 underline hover:no-underline cursor-pointer text-left">
                                             {{ __('navbar.verify_email.button') }}
                                         </button>
                                     </form>
