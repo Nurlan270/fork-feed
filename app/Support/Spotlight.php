@@ -12,9 +12,7 @@ class Spotlight
 {
     public function search(Request $request): Collection|array
     {
-        if (!auth()->check()) {
-            return [];
-        }
+        abort_if(!auth()->check(), 403);
 
         return collect()
             ->merge($this->users($request->string('search')))
