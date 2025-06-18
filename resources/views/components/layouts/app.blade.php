@@ -22,7 +22,7 @@
 <body class="bg-gray-50" x-data>
     @yield('content')
 
-    <x-spotlight
+    <x-mary-spotlight
         shortcut="meta.k"
         :search-text="__('navbar.spotlight.placeholder')"
         :no-results-text="__('navbar.spotlight.no_results')"/>
