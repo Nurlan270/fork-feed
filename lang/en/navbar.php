@@ -15,4 +15,9 @@ return [
         'placeholder'        => 'Search for Recipes or Users',
         'no_results'         => 'Ops! Nothing found.',
     ],
+    'verify_email' => [
+        'title'   => 'Verify Your Email',
+        'message' => 'Please verify your email address to access all features.',
+        'button'  => 'Resend Verification Email',
+    ],
 ];

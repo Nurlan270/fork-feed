@@ -192,6 +192,9 @@ return [
         'login'    => [
             'regex' => 'Email address / Username can\'t contain spaces.',
         ],
+        'captcha'  => [
+            'captcha' => 'Captcha is incorrect, please try again.',
+        ],
     ],
 
     /*
