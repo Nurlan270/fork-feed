@@ -4,6 +4,7 @@ namespace App\Livewire\Buttons;
 
 use App\Enums\ReactionType;
 use App\Models\Recipe;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class RecipeActionButtons extends Component
@@ -28,7 +29,7 @@ class RecipeActionButtons extends Component
 
     public function like(): void
     {
-        $this->authorize('like', $this->recipe);
+        if (!$this->authorizeAction('like')) return;
 
         auth()->user()->reactions()->syncWithoutDetaching([
             $this->recipe->id => ['type' => ReactionType::LIKE],
@@ -40,7 +41,7 @@ class RecipeActionButtons extends Component
 
     public function dislike(): void
     {
-        $this->authorize('dislike', $this->recipe);
+        if (!$this->authorizeAction('dislike')) return;
 
         auth()->user()->reactions()->syncWithoutDetaching([
             $this->recipe->id => ['type' => ReactionType::DISLIKE],
@@ -52,6 +53,8 @@ class RecipeActionButtons extends Component
 
     public function resetReaction(): void
     {
+        if (!$this->authorizeAction(['like', 'dislike'])) return;
+
         auth()->user()->reactions()->detach($this->recipe->id);
 
         $this->liked = false;
@@ -60,7 +63,7 @@ class RecipeActionButtons extends Component
 
     public function bookmark(): void
     {
-        $this->authorize('bookmark', $this->recipe);
+        if (!$this->authorizeAction('bookmark')) return;
 
         auth()->user()->bookmarks()->syncWithoutDetaching($this->recipe->id);
 
@@ -69,8 +72,23 @@ class RecipeActionButtons extends Component
 
     public function removeBookmark(): void
     {
+        if (!$this->authorizeAction('bookmark')) return;
+
         auth()->user()->bookmarks()->detach($this->recipe->id);
 
         $this->bookmarked = false;
+    }
+
+    protected function authorizeAction(iterable|string $action): bool
+    {
+        if (Gate::denies($action, $this->recipe)) {
+            notyf()
+                ->duration(3000)
+                ->info(__('flasher.info.recipe.cannot_action', [
+                    'action' => __('flasher.info.recipe.action.' . $action),
+                ]));
+            return false;
+        }
+        return true;
     }
 }

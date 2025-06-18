@@ -26,20 +26,20 @@ class RecipePolicy
     {
         return $user->hasVerifiedEmail()
             ? Response::allow()
-            : Response::denyAsNotFound();
+            : Response::deny();
     }
 
     public function dislike(User $user): Response
     {
         return $user->hasVerifiedEmail()
             ? Response::allow()
-            : Response::denyAsNotFound();
+            : Response::deny();
     }
 
     public function bookmark(User $user): Response
     {
         return $user->hasVerifiedEmail()
             ? Response::allow()
-            : Response::denyAsNotFound();
+            : Response::deny();
     }
 }
