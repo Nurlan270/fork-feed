@@ -275,7 +275,7 @@
                                         <a rel="alternate"
                                            hreflang="{{ $localeCode }}"
                                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, 'settings', forceDefaultLocation: true) }}"
-                                           class="inline-flex w-full px-4 py-2 text-sm hover:bg-gray-100">
+                                           class="inline-flex w-full px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer">
                                             <div class="inline-flex items-center">
                                                 {{ $properties['native'] }}
                                             </div>
