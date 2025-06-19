@@ -12,5 +12,6 @@ return [
         'upload_label'            => 'Click to upload images (Max. 15MB)',
         'images_selected'         => 'image(s) selected',
         'upload_button'           => 'Upload Recipe',
+        'ingredients_placeholder' => 'Cheese, Sugar, Egg, etc.',
     ],
 ];
