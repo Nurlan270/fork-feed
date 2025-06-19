@@ -16,6 +16,7 @@ Route::name('recipe.')
         'verified',
         'localize',
         'localizationRedirect',
+        'localeCookieRedirect',
     ])->group(function () {
         Route::get('create', CreateRecipeController::class)->name('create');
         Route::post('/', StoreRecipeController::class)->name('store');
@@ -28,6 +29,7 @@ Route::get(LaravelLocalization::setLocale() . '/recipes/{recipe}', ShowRecipeCon
         IncrementViewsNumber::class,
         'localize',
         'localizationRedirect',
+        'localeCookieRedirect',
     ])->name('recipe.show');
 
 Route::get(LaravelLocalization::setLocale() . '/recipes/ingredient/{ingredient:slug}',
@@ -36,4 +38,5 @@ Route::get(LaravelLocalization::setLocale() . '/recipes/ingredient/{ingredient:s
     })->middleware([
     'localize',
     'localizationRedirect',
+    'localeCookieRedirect',
 ])->name('recipe.by-ingredient');

@@ -10,17 +10,26 @@ Route::name('user.')
         'auth',
         'localize',
         'localizationRedirect',
+        'localeCookieRedirect',
     ])->group(function () {
         Route::view('profile', 'user.profile')->name('profile');
         Route::view('bookmarks', 'user.bookmarks')->name('bookmarks');
-        Route::view('settings', 'user.settings')->name('settings');
     });
+
+Route::view(LaravelLocalization::setLocale() . '/settings', 'user.settings')
+    ->middleware([
+        'auth',
+        'localize',
+        'localizationRedirect',
+    ])
+    ->name('user.settings');
 
 Route::name('user.')
     ->prefix(LaravelLocalization::setLocale() . '/@{user}')
     ->middleware([
         'localize',
         'localizationRedirect',
+        'localeCookieRedirect',
     ])->group(function () {
         Route::get('/', function (User $user) {
             return view('user.profile', compact('user'));
