@@ -33,6 +33,8 @@ class RecipeCard extends Component
 
         $this->recipe->delete();
 
+        notyf()->success(__('flasher.recipe.deleted'));
+
         $this->dispatch('recipe-deleted');
 
         $this->skipRender();
