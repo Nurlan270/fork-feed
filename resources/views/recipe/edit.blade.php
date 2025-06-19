@@ -147,8 +147,14 @@
 @pushonce('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const tagify = new Tagify(document.querySelector('#ingredients'), {
+            var tagify = new Tagify(document.querySelector('#ingredients'), {
                 whitelist: @json($ingredients),
+                pattern: /^.{0,30}$/,
+                placeholder: '{{ __('recipe/create.form.ingredients_placeholder') }}',
+                dropdown: {
+                    enabled: 1,
+                    maxItems: 10,
+                },
                 autoComplete: {
                     rightKey: true
                 }

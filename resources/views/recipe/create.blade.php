@@ -18,14 +18,16 @@
                 {{ __('recipe/create.title') }}
             </h2>
 
-            <form method="POST" action="{{ getLocalizedURL('recipe.store') }}" class="space-y-6" enctype="multipart/form-data">
+            <form method="POST" action="{{ getLocalizedURL('recipe.store') }}" class="space-y-6"
+                  enctype="multipart/form-data">
                 @csrf
 
                 <div class="space-y-2">
                     <label for="title" class="text-sm font-medium text-gray-700">
                         {{ __('recipe/create.form.title') }}
                     </label>
-                    <input type="text" id="title" name="title" placeholder="{{ __('recipe/create.form.title_placeholder') }}"
+                    <input type="text" id="title" name="title"
+                           placeholder="{{ __('recipe/create.form.title_placeholder') }}"
                            value="{{ old('title') }}"
                            class="block w-full p-2 border rounded-md shadow-sm
                        focus:ring-primary-500 focus:border-primary-500"
@@ -65,7 +67,8 @@
                     </label>
                     <label
                         class="block w-full cursor-pointer p-4 border border-dashed rounded-md text-center hover:bg-gray-50">
-                        <span id="fileLabelText" class="text-gray-600">{{ __('recipe/create.form.upload_label') }}</span>
+                        <span id="fileLabelText"
+                              class="text-gray-600">{{ __('recipe/create.form.upload_label') }}</span>
                         <input type="file" name="images[]" id="images" class="hidden" accept="image/*" multiple>
                     </label>
                     @error('images')
@@ -92,6 +95,12 @@
     <script>
         var tagify = new Tagify(document.querySelector('#ingredients'), {
             whitelist: @json($ingredients),
+            pattern: /^.{0,30}$/,
+            placeholder: '{{ __('recipe/create.form.ingredients_placeholder') }}',
+            dropdown: {
+                enabled: 1,
+                maxItems: 10,
+            },
             autoComplete: {
                 rightKey: true
             }
