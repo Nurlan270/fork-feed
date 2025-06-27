@@ -6,4 +6,5 @@ return [
     'bookmark' => 'Add to Bookmarks',
     'follow'   => 'Follow',
     'unfollow' => 'Unfollow',
+    'chat'     => 'Chat with :name',
 ];

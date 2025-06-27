@@ -17,13 +17,15 @@ return [
         'no_recipes'            => 'No recipes yet',
     ],
     'followers'       => [
-        'page_title' => "Followers of :name",
-        'title'      => "Followers",
-        'empty'      => "No followers yet",
+        'page_title'    => "Followers of :name",
+        'title'         => "Followers",
+        'empty'         => "No followers yet",
+        'go_to_profile' => "Go to :name's profile",
     ],
     'following'       => [
-        'page_title' => "Following :name",
-        'title'      => "Following",
-        'empty'      => "Not following anyone",
+        'page_title'    => "Following :name",
+        'title'         => "Following",
+        'empty'         => "Not following anyone",
+        'go_to_profile' => "Go to :name's profile",
     ],
 ];
