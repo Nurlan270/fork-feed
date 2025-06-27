@@ -19,7 +19,7 @@
     @livewireStyles
     @stack('styles')
 </head>
-<body class="bg-gray-50" x-data>
+<body class="bg-white" x-data>
     @yield('content')
 
     <x-mary-spotlight
