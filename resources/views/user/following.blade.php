@@ -16,17 +16,18 @@
 
                 <div class="flex flex-col">
                     @forelse($following as $user)
-                        <a class="flex items-center justify-between border-b-2 border-b-gray-200 py-5"
-                           href="{{ getLocalizedURL('user.tag-profile', compact('user')) }}">
-                            <div class="flex gap-x-4 items-center">
+                        <div class="flex items-center justify-between border-b-2 border-b-gray-200 py-5">
+                            <a href="{{ getLocalizedURL('user.tag-profile', compact('user')) }}"
+                               title="{{ __('profile.following.go_to_profile', ['name' => $user->name]) }}"
+                               class="flex gap-x-4 items-center">
                                 <img src="{{ $user->avatar }}" alt="Avatar" class="size-14 rounded-4xl">
                                 <div class="flex flex-col justify-center gap-y-1">
                                     <p>{{ $user->name }}</p>
                                     <p>{{ '@'.$user->username }}</p>
                                 </div>
-                            </div>
-                            <livewire:buttons.subscription-button :$user/>
-                        </a>
+                            </a>
+                            <livewire:buttons.user-action-buttons :$user/>
+                        </div>
                     @empty
                         <p class="text-sm text-center text-gray-600 mt-6">
                             {{ __('profile.following.empty') }}
