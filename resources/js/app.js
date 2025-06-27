@@ -1,3 +1,3 @@
 import './bootstrap';
-import './navbar';
 import './swiper';
+import './chat'
