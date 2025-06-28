@@ -116,4 +116,15 @@ class User extends Authenticatable implements CanResetPassword, MustVerifyEmail
         return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id')
             ->withTimestamps();
     }
+
+    public function chats()
+    {
+        return Chat::where('user_a', $this->id)
+            ->orWhere('user_b', $this->id);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
