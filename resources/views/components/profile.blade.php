@@ -28,7 +28,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mb-4 md:mb-6">
             <!-- Left Column: Profile, Bookmarks, Ingredients -->
-            <div class="md:col-span-3 space-y-4 md:sticky top-5 self-start">
+            <div class="md:col-span-3 space-y-4 md:sticky top-20 self-start">
                 <!-- Profile Information -->
                 <div class="bg-white rounded-lg p-4 shadow-sm">
                     <h3 class="text-base md:text-lg font-semibold text-primary-800">

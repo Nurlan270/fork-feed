@@ -49,7 +49,7 @@
                     <!-- Description -->
                     <div class="p-4">
                         <h3 class="text-base md:text-md font-semibold text-primary-800 mb-6">{{ __('recipe/show.description') }}</h3>
-                        <div class="prose max-w-fit">
+                        <div class="prose break-words max-w-fit">
                             {!! Str::markdown($recipe->description) !!}
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                 <!-- Right Column: Author + Ingredients -->
                 <div class="md:col-span-3 space-y-4">
                     <!-- Right Column: Author and Info Section -->
-                    <div class="md:col-span-3 space-y-4 sticky top-5">
+                    <div class="md:col-span-3 space-y-4 sticky top-20">
 
                         <!-- Author Info -->
                         <div class="rounded-lg p-4 shadow-sm">
