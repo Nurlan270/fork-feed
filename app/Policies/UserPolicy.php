@@ -15,4 +15,9 @@ class UserPolicy
     {
         return $user->hasVerifiedEmail() && $user->id !== $targetUser->id;
     }
+
+    public function chat(User $user, User $targetUser): bool
+    {
+        return $user->hasVerifiedEmail() && $user->id !== $targetUser->id;
+    }
 }
