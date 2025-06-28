@@ -24,6 +24,7 @@ services:
         depends_on:
             - mysql
             - redis
+            - reverb
             - typesense
     mysql:
         image: 'mysql/mysql-server:8.0'
@@ -84,6 +85,26 @@ services:
                 - 'exec 3<>/dev/tcp/localhost/8108 && printf ''GET /health HTTP/1.1\r\nConnection: close\r\n\r\n'' >&3 && head -n1 <&3 | grep ''200'' && exec 3>&-'
             retries: 5
             timeout: 7s
+    reverb:
+        build:
+            context: ./docker/8.4
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: sail-8.4/reverb
+        ports:
+            - "8080:8080" # WebSocket port
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+        volumes:
+            - '.:/var/www/html'
+        depends_on:
+            - redis
+        command: >
+            sh -c "php artisan reverb:start & php artisan queue:work --queue=chats,scout,notifications"
+        networks:
+            - sail
 
 networks:
     sail:
