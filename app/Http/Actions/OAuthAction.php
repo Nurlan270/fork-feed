@@ -24,8 +24,6 @@ class OAuthAction
 
             return redirect()->route('welcome');
         } catch (Exception $e) {
-            Log::error('While OAuth: ' . $e->getMessage());
-
             notyf()->error(__('flasher.auth.error'));
 
             return redirect()->route('auth.register');

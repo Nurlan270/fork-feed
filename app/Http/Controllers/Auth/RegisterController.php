@@ -43,8 +43,6 @@ class RegisterController extends Controller
 
             return redirect()->intended();
         } catch (Exception $e) {
-            Log::error('While registering: ' . $e->getMessage());
-
             notyf()->error(__('flasher.auth.error'));
 
             return redirect()->back();

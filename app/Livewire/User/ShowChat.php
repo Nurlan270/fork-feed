@@ -16,7 +16,7 @@ use Livewire\Component;
 class ShowChat extends Component
 {
     #[Locked]
-    public ?User $user;
+    public ?User $user = null;
 
     #[Validate('required|string|max:10000')]
     public string $message;
@@ -92,18 +92,14 @@ class ShowChat extends Component
 
     protected function getChat()
     {
-        if (!$this->user) {
-            return null;
-        }
+        if (!$this->user) return null;
+
+        [$userA, $userB] = collect([auth()->id(), $this->user->id])->sort()->values();
 
         return Chat::with('messages')
-            ->where(function ($query) {
-                $query->where('user_a', auth()->id())
-                    ->where('user_b', $this->user->id);
-            })
-            ->orWhere(function ($query) {
-                $query->where('user_a', $this->user->id)
-                    ->where('user_b', auth()->id());
+            ->where(function ($query) use ($userA, $userB) {
+                $query->where('user_a', $userA)
+                    ->where('user_b', $userB);
             })
             ->first();
     }

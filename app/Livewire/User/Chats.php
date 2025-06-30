@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User;
 
+use App\Models\Chat;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Support\Collection;
