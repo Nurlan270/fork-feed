@@ -18,12 +18,6 @@
                     <x-input label="{{ __('auth/password/forgot.form.email') }}" name="email" placeholder="{{ __('auth/password/forgot.form.email_placeholder') }}"/>
                 </div>
 
-                <div class="space-y-2">
-                    <img src="{{ captcha_src('flat') }}" alt="{{ __('auth/register.form.captcha_alt') }}">
-                    <x-input name="captcha" :render-old-value="false"
-                             placeholder="{{ __('auth/register.form.captcha_placeholder') }}"/>
-                </div>
-
                 <button type="submit" class="w-full flex justify-center py-2 px-4
                     border border-transparent rounded-md shadow-sm
                     text-sm font-medium text-white bg-primary-600
