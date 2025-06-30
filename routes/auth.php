@@ -21,7 +21,8 @@ Route::name('auth.')
     ])->group(function () {
         //  Register
         Route::view('register', 'auth.register')->name('register');
-        Route::post('register', RegisterController::class)->name('register.store');
+        Route::post('register', RegisterController::class)
+            ->middleware('throttle:5,2')->name('register.store');
 
         //   Login
         Route::view('login', 'auth.login')->name('login');
@@ -48,7 +49,8 @@ Route::name('password.')
         'localeCookieRedirect',
     ])->group(function () {
         Route::view('forgot-password', 'auth.password.forgot')->name('request');
-        Route::post('forgot-password', [PasswordResetController::class, 'email'])->name('email');
+        Route::post('forgot-password', [PasswordResetController::class, 'email'])
+            ->middleware('throttle:5,2')->name('email');
 
         Route::get('reset-password/{token}', function (string $token) {
             return view('auth.password.reset', compact('token'));
