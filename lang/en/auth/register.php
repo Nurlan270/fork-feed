@@ -12,8 +12,6 @@ return [
         'email_placeholder'     => 'john@gmail.com',
         'password'              => 'Password',
         'password_confirmation' => 'Password confirmation',
-        'captcha_alt'           => 'Captcha Image',
-        'captcha_placeholder'   => 'Enter captcha above',
         'submit'                => 'Sign up',
         'already_have_account'  => 'Already have an account?',
         'sign_in'               => 'Sign In',

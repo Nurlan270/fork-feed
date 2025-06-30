@@ -12,8 +12,6 @@ return [
         'email_placeholder'     => 'ivan@gmail.com',
         'password'              => 'Пароль',
         'password_confirmation' => 'Подтверждение пароля',
-        'captcha_alt'           => 'Картинка с капчей',
-        'captcha_placeholder'   => 'Введите капчу выше',
         'submit'                => 'Зарегистрироваться',
         'already_have_account'  => 'Уже есть аккаунт?',
         'sign_in'               => 'Войти',
