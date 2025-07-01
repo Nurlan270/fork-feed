@@ -15,8 +15,7 @@ class PasswordResetController extends Controller
     public function email(Request $request)
     {
         $request->validate([
-            'email'   => ['required', 'string', 'email', 'exists:users,email'],
-            'captcha' => ['required', 'captcha'],
+            'email' => ['required', 'string', 'email', 'exists:users,email'],
         ]);
 
         try {
