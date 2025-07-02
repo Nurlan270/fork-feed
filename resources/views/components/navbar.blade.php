@@ -189,23 +189,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ getLocalizedURL('welcome') }}"
+                    <a href="{{ getLocalizedURL('about-us') }}"
                        class="block py-2 px-3 text-gray-900 rounded-sm
                               md:p-0 md:bg-transparent md:hover:bg-transparent
                               hover:bg-gray-100
                               hover:text-primary-700
-                              {{ markRoute('#', 'text-white bg-primary-700 md:text-primary-700') }}">
+                              {{ markRoute('about-us', 'text-white bg-primary-700 md:text-primary-700') }}">
                         {{ __('navbar.about') }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ getLocalizedURL('welcome') }}"
-                       class="block py-2 px-3 text-gray-900 rounded-sm
-                              md:p-0 md:bg-transparent md:hover:bg-transparent
-                              hover:bg-gray-100
-                              hover:text-primary-700
-                              {{ markRoute('#', 'text-white bg-primary-700 md:text-primary-700') }}">
-                        {{ __('navbar.services') }}
                     </a>
                 </li>
             </ul>
