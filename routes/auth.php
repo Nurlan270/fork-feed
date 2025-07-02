@@ -17,7 +17,6 @@ Route::name('auth.')
         'guest',
         'localize',
         'localizationRedirect',
-        'localeCookieRedirect',
     ])->group(function () {
         //  Register
         Route::view('register', 'auth.register')->name('register');
@@ -46,7 +45,6 @@ Route::name('password.')
         'guest',
         'localize',
         'localizationRedirect',
-        'localeCookieRedirect',
     ])->group(function () {
         Route::view('forgot-password', 'auth.password.forgot')->name('request');
         Route::post('forgot-password', [PasswordResetController::class, 'email'])
@@ -66,7 +64,6 @@ Route::name('verification.')
         'auth',
         'localize',
         'localizationRedirect',
-        'localeCookieRedirect',
     ])->group(function () {
         Route::view('verify', 'auth.email.verify')->name('notice');
 
@@ -83,5 +80,4 @@ Route::post(LaravelLocalization::setLocale() . '/logout', LogoutController::clas
         'auth',
         'localize',
         'localizationRedirect',
-        'localeCookieRedirect',
     ])->name('logout');

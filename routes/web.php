@@ -9,7 +9,6 @@ require_once __DIR__ . '/recipe.php';
 Route::prefix(LaravelLocalization::setLocale())->middleware([
     'localize',
     'localizationRedirect',
-    'localeCookieRedirect',
 ])->group(function () {
     // Prepend the locale to the Livewire update route
     Livewire::setUpdateRoute(function ($handle) {
