@@ -31,10 +31,10 @@ class RecipeFactory extends Factory
     public function configure(): RecipeFactory|Factory
     {
         return $this->afterCreating(function (Recipe $recipe) {
-            $ingredients = Ingredient::inRandomOrder()->take(rand(2, 5))->pluck('id');
+            $ingredients = Ingredient::inRandomOrder()->take(rand(5, 15))->pluck('id');
             $recipe->ingredients()->attach($ingredients);
 
-            RecipeImage::factory(rand(1, 3))->create([
+            RecipeImage::factory(rand(1, 5))->create([
                 'recipe_id' => $recipe->id,
             ]);
         });
