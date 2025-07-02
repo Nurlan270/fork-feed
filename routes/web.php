@@ -17,6 +17,6 @@ Route::prefix(LaravelLocalization::setLocale())->middleware([
     });
 
     Route::view('/', 'welcome')->name('welcome');
-
     Route::view('explore', 'explore')->name('explore');
+    Route::view('about-us', 'about-us')->name('about-us');
 });
