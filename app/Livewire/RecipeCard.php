@@ -42,6 +42,8 @@ class RecipeCard extends Component
 
     public function removeBookmark(): void
     {
+        Gate::authorize('bookmark', $this->recipe);
+
         auth()->user()->bookmarks()->detach($this->recipe->id);
 
         $this->dispatch('bookmark-removed');
