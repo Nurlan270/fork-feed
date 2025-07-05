@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Laravel\Scout\Searchable;
 
 class Ingredient extends Model
 {
     /** @use HasFactory<\Database\Factories\IngredientFactory> */
-    use HasFactory, Sluggable;
-
-    public $timestamps = false;
+    use HasFactory, Sluggable, Searchable;
 
     protected $fillable = [
         'name',
@@ -27,6 +26,14 @@ class Ingredient extends Model
                 'source' => 'name',
             ],
         ];
+    }
+
+    public function toSearchableArray(): array
+    {
+        return array_merge($this->toArray(), [
+            'id'         => (string)$this->id,
+            'created_at' => $this->created_at->timestamp,
+        ]);
     }
 
     public function recipes(): BelongsToMany
