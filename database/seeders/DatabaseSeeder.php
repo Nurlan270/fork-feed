@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         //  Create ingredients
-        Ingredient::factory(25)->create();
+        Ingredient::factory(150)->create();
 
         //  Create users
         //  If you want to create users without associated recipes, remove `->withRecipes()` from the factory call
