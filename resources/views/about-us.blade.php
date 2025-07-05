@@ -1,6 +1,6 @@
 @extends('components.layouts.app')
 
-@section('title', __('about.title'))
+@section('page.title', __('about.title'))
 
 @section('content')
     <x-navbar/>
