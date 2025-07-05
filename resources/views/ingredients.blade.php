@@ -1,9 +1,9 @@
 @extends('components.layouts.app')
 
-@section('page.title', __('explore.title'))
+@section('page.title', 'Ingredients')
 
 @section('content')
     <x-navbar/>
 
-    <livewire:explore/>
+    <livewire:show-ingredients/>
 @endsection
