@@ -25,7 +25,7 @@
                         {{ __('welcome.get_started') }}
                     </a>
                 @endguest
-                <a href="{{ getLocalizedURL('explore') }}"
+                <a href="{{ getLocalizedURL('recipes') }}"
                    class="inline-flex items-center justify-center px-6 py-3 bg-white text-primary-500 rounded-lg hover:bg-gray-100 transition-colors">
                     {{ __('welcome.explore') }}
                 </a>
@@ -130,7 +130,7 @@
             </div>
 
             <div class="mt-8 text-center">
-                <a href="{{ getLocalizedURL('explore') }}"
+                <a href="{{ getLocalizedURL('recipes') }}"
                    class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors">
                     {{ __('welcome.browse_more') }}
                 </a>
