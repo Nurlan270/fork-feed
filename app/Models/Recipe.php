@@ -68,7 +68,7 @@ class Recipe extends Model
 
     public function limitedIngredients()
     {
-        return $this->belongsToMany(Ingredient::class)->limit(8);
+        return $this->belongsToMany(Ingredient::class)->limit(5);
     }
 
     public function images()
