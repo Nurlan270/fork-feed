@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Ingredient;
 use App\Models\User;
 use App\Models\Recipe;
 
@@ -211,6 +212,29 @@ return [
                 ],
                 'search-parameters' => [
                     'query_by' => 'title, description',
+                ],
+            ],
+
+            Ingredient::class => [
+                'collection-schema' => [
+                    'fields'                => [
+                        [
+                            'name' => 'id',
+                            'type' => 'string',
+                        ],
+                        [
+                            'name' => 'name',
+                            'type' => 'string',
+                        ],
+                        [
+                            'name' => 'created_at',
+                            'type' => 'int64',
+                        ],
+                    ],
+                    'default_sorting_field' => 'created_at',
+                ],
+                'search-parameters' => [
+                    'query_by' => 'name',
                 ],
             ],
 
