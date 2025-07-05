@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'    => 'О ForkFeed',
+    'title'    => 'О нас',
     'subtitle' => 'Где еда встречается со страстью.',
 
     'mission_title' => 'Наша миссия',

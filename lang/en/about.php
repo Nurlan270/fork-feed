@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'    => 'About ForkFeed',
+    'title'    => 'About us',
     'subtitle' => 'Where Food Meets Passion.',
 
     'mission_title' => 'Our Mission',
