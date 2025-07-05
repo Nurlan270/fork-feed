@@ -9,7 +9,7 @@ return [
     ],
     'meta'    => [
         'views' => 'Views',
-        'date'  => 'Date',
+        'date'  => 'Upload Date',
     ],
     'cta'     => [
         'view_recipe' => 'View Recipe',

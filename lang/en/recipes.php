@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'              => 'Explore Recipes',
+    'title'              => 'Recipes',
     'search_placeholder' => 'Search recipes...',
     'sort_by'            => [
         'label'   => 'Sort by',
