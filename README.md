@@ -13,62 +13,73 @@
 ---
 
 ## 1. Clone the Repository
-`
+```
 git clone https://github.com/Nurlan270/fork-feed.git
-`
+```
 
 ## 2. Install Composer Dependencies
-`
+```
 composer install
-`
+```
 
 ## 3. Set Up Environment
-`
+```
 cp .env.example .env && php artisan key:generate
-`
+```
 
 Configure your .env:
+- Mailtrap credentials (if SMTP is used)
 - Typesense credentials (if Search is used)
 - Socialite credentials (if OAuth2 is used)
 
 ## 4. Publish Sail Assets
-`
+```
 php artisan sail:publish
-`
+```
 
 ## 5. Start Docker (Laravel Sail)
-`
+```
 ./vendor/bin/sail up -d
-`
+```
 
 ## 6. Install NPM Packages
-`
+```
 ./vendor/bin/sail npm install
-`
+```
 
 ## 7. Build Assets
-`
+```
 ./vendor/bin/sail npm run build
-`
+```
 
 ## 8. Create Storage Directories
-`
+```
 mkdir public/storage ./storage/app/public/avatars/ ./storage/app/public/banners ./storage/app/public/recipe-images
-`
+```
 
 ## 9. Link Storage
-`
+```
 ./vendor/bin/sail php artisan storage:link
-`
+```
 
 ## 10. Run Migrations
-`
+```
 ./vendor/bin/sail php artisan migrate --seed
-`
+```
+
+---
+
+> #### ⚠️ Note: To ensure that features like chat, email notifications, and full-text search work correctly, you need to run the queue worker. You can start it using the following command:
+```
+./vendor/bin/sail php artisan queue:work --queue=chats,scout,notifications
+```
+
+---
 
 ## ⚙️ Optional Configurations
 
-### 📧 Configure Mailtrap for Email Sending (SMTP)
+### 1. 📧 Configure Mailtrap for Email Sending (SMTP)
+
 1. Create a Mailtrap Account
    - Go to https://mailtrap.io and sign up (or log in).
    - Create a new Inbox (if not already created).
@@ -79,12 +90,13 @@ mkdir public/storage ./storage/app/public/avatars/ ./storage/app/public/banners 
    - Copy the SMTP credentials provided (username, password), other credentials is already set for you.
 
 3. Add the following to your `.env` file:
+
 ```env
 MAIL_USERNAME=your-username
 MAIL_PASSWORD=your-password
 ```
 
-### 🔎 Typesense (Full-Text Search)
+### 2. 🔎 Typesense (Full-Text Search)
 
 If you'd like to enable full-text search using Typesense:
 
@@ -103,7 +115,7 @@ TYPESENSE_API_KEY=your-api-key
 ./vendor/bin/sail php artisan scout:import "App\Models\Ingredient"
 ```
 
-### 🔐 Laravel Socialite (OAuth2)
+### 3. 🔐 Laravel Socialite (OAuth2)
 
 To enable login with Google, GitHub:
 1. Register your app with the provider (e.g., Google or GitHub).
@@ -121,5 +133,32 @@ Refer to the guides below for setup help:
 - [🔗 GitHub OAuth2 Setup](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app)
 - [🔗 Google OAuth2 Setup](https://support.google.com/googleapi/answer/6158849?hl=en)
 
+### 4. 📡 Laravel Reverb (Websockets)
+ 
+1. Run the following command to generate Reverb keys:
 
-> ⚠️ Note: If you don't configure these features, certain parts of the app may throw errors or not function as expected
+```
+./vendor/bin/sail php artisan reverb:generate
+```
+
+2. Build the assets again **(That's Important!)**:
+
+```
+./vendor/bin/sail npm run build
+```
+
+3. Start the Reverb server:
+
+```
+./vendor/bin/sail php artisan reverb:start
+```
+
+Then you'll also need to restart queue workers, if they are currently running:
+1. Stop the currently running queue workers
+2. Re-run queue workers:
+
+```
+./vendor/bin/sail php artisan queue:work --queue=chats,scout,notifications
+```
+
+> #### ⚠️ Note: If you don't configure these features, certain parts of the app may throw errors or not function as expected
