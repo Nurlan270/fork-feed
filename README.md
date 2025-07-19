@@ -1,5 +1,10 @@
 # 🚀 App Setup Guide
 
+![PHP](https://img.shields.io/badge/php-8.2%2B-blue)
+![Laravel](https://img.shields.io/badge/laravel-12.x-red)
+![Last Commit](https://img.shields.io/github/last-commit/Nurlan270/fork-feed)
+[![wakatime](https://wakatime.com/badge/github/Nurlan270/fork-feed.svg)](https://wakatime.com/badge/github/Nurlan270/fork-feed)
+
 ## Requirements
 
 - PHP 8.2+
